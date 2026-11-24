@@ -6,110 +6,76 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
-*{font-family:Inter,sans-serif;-webkit-tap-highlight-color:transparent}
+*{font-family:Inter,sans-serif;-webkit-tap-highlight-color:transparent;box-sizing:border-box}
 body{background:#0A0E1E}
 .glass{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}
 input,select,textarea{background:#232A45!important;border:1.5px solid rgba(255,255,255,.18)!important;color:#fff!important;outline:none!important;width:100%;border-radius:14px;padding:16px!important;font-size:16px!important;line-height:1.4}
 input:focus,select:focus,textarea:focus{border-color:#f59e0b!important;background:#2A3352!important;box-shadow:0 0 0 3px rgba(245,158,11,.2)}
 input::placeholder,textarea::placeholder{color:#9AA3C0!important;font-size:15px}
-input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus,input:-webkit-autofill:active{-webkit-box-shadow:0 0 0 1000px #232A45 inset!important;-webkit-text-fill-color:#fff!important;caret-color:#fff;transition:background-color 9999s ease-in-out 0s}
-::selection{background:#f59e0b;color:#000}
 select option{color:black}
 label{font-size:12px;color:#9AA3C0;display:block;margin-bottom:6px;margin-top:16px;font-weight:600;letter-spacing:.3px}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(100px);transition:.3s;z-index:9999;max-width:92%;text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .agree-tab.active{background:#f59e0b!important;color:#000!important}
 .agree-tab{min-height:46px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:1 1 auto!important;white-space:nowrap}
-.agreement-paper{background:white;color:#111827;font-family:Georgia,serif}
-.agreement-paper .doc-table{width:100%;border-collapse:collapse;font-size:13px}
-.agreement-paper .doc-table td{border:1px solid #d1d5db;padding:9px 10px}
-.agreement-paper .doc-table td:first-child{background:#f9fafb;font-weight:bold;width:35%;font-size:12px;text-transform:uppercase;color:#374151}
-.sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
-.sig-box{border:1.5px solid #d1d5db;border-radius:12px;padding:14px;min-height:110px}
-.sig-box.dashed{border-style:dashed}
-.sig-label{font-size:10px;letter-spacing:1.5px;color:#6b7280;font-family:Inter,sans-serif;font-weight:700}
-.sig-name{font-weight:bold;font-size:14px;margin-top:6px}
-.sig-line{height:42px;border-bottom:1.5px solid #111;margin-top:6px}
-.sig-date{font-size:11px;color:#6b7280;margin-top:6px}
+/* --- HEADER CORRECTED - 2 LINES, NO LAP --- */
+.maw-header{display:block!important;padding:12px 12px 10px!important;background:#0A0E1E!important}
+.maw-row1{display:flex!important;align-items:center!important;gap:10px!important;width:100%!important}
+.maw-row2{display:flex!important;gap:8px!important;margin-top:10px!important;width:100%!important}
+.maw-logo2{background:#0A2540!important;border:1.5px solid #D4AF37!important;border-radius:11px!important;width:40px!important;height:40px!important;min-width:40px!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-shrink:0!important}
+.maw-logo2 span{font-size:13px!important;color:#D4AF37!important;font-weight:900!important;font-family:Georgia,serif!important;line-height:1!important}
+.maw-name{font-weight:900!important;font-size:19px!important;line-height:1!important;white-space:nowrap!important;color:#fff!important}
+.maw-sub{font-size:11px!important;color:#94A3B8!important;margin-top:3px!important;white-space:nowrap!important}
+.maw-lang{flex:1!important;text-align:center!important;background:rgba(255,255,255,.1)!important;border:1px solid rgba(255,255,255,.2)!important;padding:10px!important;border-radius:999px!important;font-size:13px!important;font-weight:800!important;color:#fff!important}
+.maw-phone{flex:1.4!important;text-align:center!important;background:#F59E0B!important;padding:10px!important;border-radius:999px!important;font-size:13px!important;font-weight:900!important;color:#000!important;white-space:nowrap!important;text-decoration:none!important}
+/* --- SAMPLE STYLE --- */
+.agreement-paper{background:#fff;color:#111;font-family:Arial,Helvetica,sans-serif;line-height:1.55;padding:28px 24px!important}
+.sample-title{font-size:20px;font-weight:900;letter-spacing:.2px;margin:4px 0 18px;text-transform:uppercase;line-height:1.25}
+.sample-h{font-size:14px;font-weight:700;font-style:italic;margin:16px 0 6px}
+.sample-p{font-size:13px;line-height:1.65;margin:0 0 8px}
+.sample-terms{margin:6px 0 0;padding:0;list-style:none}
+.sample-terms li{display:flex;gap:12px;font-size:13px;line-height:1.6;margin-bottom:9px}
+.sample-terms li span:first-child{flex:0 0 18px;text-align:right}
+.sample-sig{margin-top:14px;font-size:13px;line-height:2.1}
+.sample-footer{margin-top:22px;font-size:11px;color:#333;border-top:1px solid #ddd;padding-top:8px}
+.sample-pagebreak{page-break-before:always;border-top:2px solid #111;padding-top:18px;margin-top:22px}
+.id-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.id-box{border:1.5px solid #bbb;border-radius:10px;padding:10px;text-align:center;min-height:160px}
+.id-box img{width:100%;height:125px;object-fit:cover;border-radius:6px;background:#f3f4f6}
+.id-label{font-size:10px;font-weight:800;letter-spacing:1px;color:#555;margin-bottom:6px}
 .watermark-box{position:relative}
-.watermark-box::before{content:"SAMPLE";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-32deg);font-size:48px;font-weight:900;color:rgba(220,38,38,.08);white-space:nowrap;pointer-events:none;letter-spacing:8px}
-.watermark-box::after{display:none}
+.watermark-box::before{content:"SAMPLE";position:absolute;top:45%;left:50%;transform:translate(-50%,-50%) rotate(-32deg);font-size:44px;font-weight:900;color:rgba(220,38,38,.07);white-space:nowrap;pointer-events:none;letter-spacing:8px}
 .locked{opacity:.5;pointer-events:none}
 .photo-preview{width:70px;height:70px;object-fit:cover;border-radius:10px;border:1px solid #ddd;display:none;margin-top:6px}
 input[type=file]{padding:10px!important}
-.id-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
-.id-box{border:1.5px solid #d1d5db;border-radius:12px;padding:10px;text-align:center}
-.id-box img{width:100%;height:110px;object-fit:cover;border-radius:8px;background:#f3f4f6}
-.glass .grid{grid-auto-rows:1fr}
-.glass .grid > div{display:flex;flex-direction:column;justify-content:flex-start}
-.maw-logo{background:#0A2540;border:1px solid rgba(212,175,55,.4);border-radius:11px;width:44px;height:44px;display:grid;place-items:center;flex-shrink:0}
-.maw-logo span{font-family:Georgia,serif;font-weight:900;font-size:17px;letter-spacing:-.5px;background:linear-gradient(180deg,#F5D67B,#C9A227);-webkit-background-clip:text;-webkit-text-fill-color:transparent;color:#D4AF37;line-height:1}
 </style>
 </head>
 <body class="text-white min-h-screen">
-
-<div class="p-4 flex items-center justify-between sticky top-0 bg-[#0A0E1E]/95 backdrop-blur z-50">
-<div class="flex items-center gap-2">
-<div class="maw-logo"><span>MAW</span></div>
-<div><p class="font-black text-[19px] leading-none">MyAgreement<span class="text-amber-500">Wala</span></p><p class="text-[11px] text-slate-400 mt-1">Make Agreement Easy • 100% Online</p></div>
+<div class="maw-header sticky top-0 z-50">
+  <div class="maw-row1">
+    <div class="maw-logo2"><span>MAW</span></div>
+    <div style="flex:1;min-width:0">
+      <p class="maw-name">MyAgreement<span style="color:#F59E0B">Wala</span></p>
+      <p class="maw-sub">Make Agreement Easy • 100% Online</p>
+    </div>
+  </div>
+  <div class="maw-row2">
+    <button id="langBtn" onclick="toggleLang()" class="maw-lang">मराठी</button>
+    <a href="tel:+918329887823" class="maw-phone">📞 83298 87823</a>
+  </div>
 </div>
-<div class="flex items-center gap-2">
-<button id="langBtn" onclick="toggleLang()" class="bg-white/10 border border-white/20 px-3 py-1.5 rounded-full text-[12px] font-black whitespace-nowrap">मराठी</button>
-<a href="tel:+918329887823" class="bg-amber-500 text-black px-3 py-1.5 rounded-full text-[12px] font-black whitespace-nowrap">📞 83298 87823</a>
-</div>
-</div>
-
 <div class="mx-3 mt-1 bg-gradient-to-br from-amber-500 to-orange-600 rounded-[24px] p-5">
-<h1 class="font-black text-[28px] leading-tight" data-en="Any Agreement in 10 Minutes. No Lawyer. No Office." data-mr="कोणताही करार १० मिनिटांत. वकील नाही. ऑफिस नाही.">Any Agreement<br>in <span class="text-black">10 Minutes.</span><br>No Lawyer. No Office.</h1>
-<p class="text-[13px] text-orange-100 mt-2" data-en="Fill form → Pay → Get Code on WhatsApp → Get PDF. Deal Done in 10 Minutes!" data-mr="फॉर्म भरा → पेमेंट करा → WhatsApp वर कोड मिळवा → PDF मिळवा. १० मिनिटांत डील डन!">Fill form → Pay → Get Code on WhatsApp → Get PDF. Deal Done in 10 Minutes!</p>
-<p class="text-[11px] text-white/90 mt-1 font-bold" data-en="📍 Maharashtra" data-mr="📍 महाराष्ट्र">📍 Maharashtra</p>
-<div class="flex gap-2 mt-4"><button onclick="document.getElementById('formSection').scrollIntoView({behavior:'smooth'})" class="flex-1 bg-white text-black py-3.5 rounded-xl font-black text-[14px]" data-en="Create Agreement →" data-mr="करार तयार करा →">Create Agreement →</button><button onclick="showStampGuide()" class="flex-1 bg-black/30 py-3.5 rounded-xl font-bold text-[13px]" data-en="Stamp Guide" data-mr="स्टॅम्प माहिती">Stamp Guide</button></div>
-<div class="grid grid-cols-3 gap-2 mt-4 text-center text-[11px]"><div class="bg-black/20 rounded-xl py-2"><p class="font-black text-[14px]">10 Min</p><span data-en="Delivery" data-mr="डिलिव्हरी">Delivery</span></div><div class="bg-black/20 rounded-xl py-2"><p class="font-black text-[14px]">₹299</p><span data-en="Starting" data-mr="सुरुवात">Starting</span></div><div class="bg-black/20 rounded-xl py-2"><p class="font-black text-[14px]">100%</p><span data-en="Online" data-mr="ऑनलाइन">Online</span></div></div>
+<h1 class="font-black text-[28px] leading-tight">Any Agreement<br>in <span class="text-black">10 Minutes.</span><br>No Lawyer. No Office.</h1>
+<p class="text-[13px] text-orange-100 mt-2">Fill form → Pay → Get Code on WhatsApp → Get PDF. Deal Done in 10 Minutes!</p>
+<div class="flex gap-2 mt-4"><button onclick="document.getElementById('formSection').scrollIntoView({behavior:'smooth'})" class="flex-1 bg-white text-black py-3.5 rounded-xl font-black text-[14px]">Create Agreement →</button><button onclick="showStampGuide()" class="flex-1 bg-black/30 py-3.5 rounded-xl font-bold text-[13px]">Stamp Guide</button></div>
+<div class="grid grid-cols-3 gap-2 mt-4 text-center text-[11px]"><div class="bg-black/20 rounded-xl py-2"><p class="font-black text-[14px]">10 Min</p><span>Delivery</span></div><div class="bg-black/20 rounded-xl py-2"><p class="font-black text-[14px]">₹299</p><span>Starting</span></div><div class="bg-black/20 rounded-xl py-2"><p class="font-black text-[14px]">2 Pages</p><span>Terms + ID</span></div></div>
 </div>
-
-<div class="mx-3 mt-3 glass rounded-[20px] p-4">
-<p class="font-black text-[17px]" data-en="How It Works - 4 Easy Steps" data-mr="कसे काम करते - ४ सोप्या स्टेप्स">How It Works - 4 Easy Steps</p>
-<div class="grid grid-cols-2 gap-2 mt-3 text-[12px]">
-<div class="bg-white/5 rounded-xl p-3"><b class="text-amber-400">1. Fill Form</b><br>Owner, Tenant, Rent, Dates - 2 Minutes</div>
-<div class="bg-white/5 rounded-xl p-3"><b class="text-amber-400">2. Pay & WhatsApp</b><br>Pay on GPay, Send Details on WhatsApp</div>
-<div class="bg-white/5 rounded-xl p-3"><b class="text-amber-400">3. Get Code</b><br>We check payment & send Code on WhatsApp</div>
-<div class="bg-white/5 rounded-xl p-3"><b class="text-amber-400">4. Enter Code & Download</b><br>Enter Code, PDF Downloads - 2 Pages</div>
-</div>
-</div>
-
-<div class="mx-3 mt-3 glass rounded-[20px] p-4">
-<p class="font-black text-[17px]" data-en="Reference - What You Need" data-mr="संदर्भ - तुम्हाला काय लागेल">Reference - What You Need</p>
-<p class="text-[12px] text-slate-300 mt-2 leading-relaxed">• Owner + Tenant Full Name<br>• Photo (Optional) + Aadhaar Front Photo (Optional)<br>• Rent, Deposit, Start Date, Duration<br>• Property Address<br>• Mask Aadhaar: Show only last 4 digits if possible</p>
-<div class="flex gap-2 mt-3"><button onclick="viewSamplePDF()" class="flex-1 bg-white text-black py-3 rounded-xl font-bold text-[13px]" data-en="View Sample PDF - 2 Pages" data-mr="सॅम्पल PDF पहा - २ पेज">View Sample PDF - 2 Pages</button><button onclick="previewAgreement(false)" class="flex-1 bg-amber-500 text-black py-3 rounded-xl font-bold text-[13px]" data-en="Preview My Form" data-mr="माझा फॉर्म पहा">Preview My Form</button></div>
-<p class="text-[11px] text-slate-400 mt-2" data-en="Sample is EXACT same design as Real PDF. Only watermark SAMPLE. Real PDF has no watermark." data-mr="सॅम्पल अगदी खऱ्या PDF सारखाच आहे. फक्त SAMPLE वॉटरमार्क आहे. खऱ्या PDF मध्ये वॉटरमार्क नाही.">Sample is EXACT same design as Real PDF. Only watermark SAMPLE. Real PDF has no watermark.</p>
-</div>
-
-<div class="mx-3 mt-3 glass rounded-[20px] p-4">
-<p class="text-[20px] leading-none">⭐⭐⭐⭐⭐ <span class="font-black text-[17px]">4.8 / 5.0 on Google</span></p>
-<p class="text-[12px] text-slate-400 mt-1">800+ Verified Reviews • Maharashtra</p>
-<div class="mt-3 space-y-2 text-[13px]"><div class="bg-white/5 rounded-xl p-3">⭐⭐⭐⭐⭐ <b>Rohit Patil</b><br><span class="text-slate-300">Agreement in 5 mins, society accepted.</span></div><div class="bg-white/5 rounded-xl p-3">⭐⭐⭐⭐⭐ <b>Priya Mukherjee</b><br><span class="text-slate-300">Saved broker fees. Clean drafting.</span></div></div>
-</div>
-
-<div class="mx-3 mt-3 glass rounded-[20px] p-4">
-<p class="font-bold" data-en="Choose Agreement Type" data-mr="कराराचा प्रकार निवडा">Choose Agreement Type</p>
-<div class="grid grid-cols-3 gap-2 mt-3">
-<button onclick="selectAgreement('rent')" data-type="rent" class="agree-tab active bg-white/10 border border-white/20 px-3 py-2.5 rounded-xl text-[13px] font-bold">Rent</button>
-<button onclick="selectAgreement('pg')" data-type="pg" class="agree-tab bg-white/10 border border-white/20 px-3 py-2.5 rounded-xl text-[13px] font-bold">PG</button>
-<button onclick="selectAgreement('affidavit')" data-type="affidavit" class="agree-tab bg-white/10 border border-white/20 px-3 py-2.5 rounded-xl text-[13px] font-bold">Affidavit</button>
-<button onclick="selectAgreement('leave')" data-type="leave" class="agree-tab bg-white/10 border border-white/20 px-2 py-2.5 rounded-xl text-[12px] font-bold">Leave & License</button>
-<button onclick="selectAgreement('shop')" data-type="shop" class="agree-tab bg-white/10 border border-white/20 px-3 py-2.5 rounded-xl text-[13px] font-bold">Shop</button>
-<button onclick="selectAgreement('sale')" data-type="sale" class="agree-tab bg-white/10 border border-white/20 px-3 py-2.5 rounded-xl text-[13px] font-bold">Sale</button>
-</div>
-</div>
-
-<div class="mx-3 mt-3 grid grid-cols-2 gap-2">
-<div onclick="selectPlan('basic')" id="planBasic" class="glass rounded-[20px] p-4"><p class="font-black">BASIC ₹299</p><p class="text-[12px] mt-1 leading-relaxed">Legal PDF - 2 Pages<br>WhatsApp Delivery<br>1 Free Correction</p><p class="mt-2 bg-white/10 text-center py-2 rounded-lg text-[12px] font-bold">Select Basic</p></div>
-<div onclick="selectPlan('premium')" id="planPremium" class="bg-amber-500 text-black rounded-[20px] p-4 border-4 border-white relative"><span class="absolute -top-2 -right-1 bg-black text-white text-[10px] px-2 py-0.5 rounded-full font-bold">MOST POPULAR</span><p class="font-black">PREMIUM ₹699</p><p class="text-[12px] mt-1 leading-relaxed">Everything in Basic<br>E-Stamp Guide<br>E-Sign Guide<br>10 Min Express<br>Unlimited Corrections - 7 Days</p><p class="mt-2 bg-black text-white text-center py-2 rounded-lg text-[12px] font-bold">✓ Selected</p></div>
-</div>
-
-<div id="formSection" class="m-3 glass rounded-[24px] p-4">
-<p class="font-black text-[19px]" id="formTitle">Rent Agreement</p>
-
+<div class="mx-3 mt-3 glass rounded-[20px] p-4"><p class="font-black text-[17px]">How It Works - 4 Easy Steps</p><div class="grid grid-cols-2 gap-2 mt-3 text-[12px]"><div class="bg-white/5 rounded-xl p-3"><b class="text-amber-400">1. Fill Form</b><br>Owner, Tenant, Rent, Dates - 2 Minutes</div><div class="bg-white/5 rounded-xl p-3"><b class="text-amber-400">2. Pay & WhatsApp</b><br>Pay on GPay, Send Details on WhatsApp</div><div class="bg-white/5 rounded-xl p-3"><b class="text-amber-400">3. Get Code</b><br>We check payment & send Code on WhatsApp</div><div class="bg-white/5 rounded-xl p-3"><b class="text-amber-400">4. Enter Code & Download</b><br>Enter Code, PDF Downloads - 2 Pages</div></div></div>
+<div class="mx-3 mt-3 glass rounded-[20px] p-4"><p class="font-black text-[17px]">Reference - What You Need</p><p class="text-[12px] text-slate-300 mt-2 leading-relaxed">• Owner + Tenant Full Name<br>• Photo (Optional) + Aadhaar Front Photo (Optional)<br>• Rent, Deposit, Start Date, Duration<br>• Property Address<br>• Mask Aadhaar: Show only last 4 digits if possible</p><div class="flex gap-2 mt-3"><button onclick="viewSamplePDF()" class="flex-1 bg-white text-black py-3 rounded-xl font-bold text-[13px]">View Sample PDF - 2 Pages</button><button onclick="previewAgreement(false)" class="flex-1 bg-amber-500 text-black py-3 rounded-xl font-bold text-[13px]">Preview My Form</button></div><p class="text-[11px] text-slate-400 mt-2">Sample is EXACT same design as Real PDF. Only watermark SAMPLE. Real PDF has no watermark.</p></div>
+<div class="mx-3 mt-3 glass rounded-[20px] p-4"><p class="text-[20px] leading-none">⭐⭐⭐⭐⭐ <span class="font-black text-[17px]">4.8 / 5.0 on Google</span></p><p class="text-[12px] text-slate-400 mt-1">800+ Verified Reviews • Maharashtra</p><div class="mt-3 space-y-2 text-[13px]"><div class="bg-white/5 rounded-xl p-3">⭐⭐⭐⭐⭐ <b>Rohit Patil</b><br><span class="text-slate-300">Agreement in 5 mins, society accepted.</span></div><div class="bg-white/5 rounded-xl p-3">⭐⭐⭐⭐⭐ <b>Priya Mukherjee</b><br><span class="text-slate-300">Saved broker fees. Clean drafting.</span></div></div></div>
+<div class="mx-3 mt-3 glass rounded-[20px] p-4"><p class="font-bold">Choose Agreement Type</p><div class="grid grid-cols-3 gap-2 mt-3"><button onclick="selectAgreement('rent')" data-type="rent" class="agree-tab active bg-white/10 border border-white/20 px-3 py-2.5 rounded-xl text-[13px] font-bold">Rent</button><button onclick="selectAgreement('pg')" data-type="pg" class="agree-tab bg-white/10 border border-white/20 px-3 py-2.5 rounded-xl text-[13px] font-bold">PG</button><button onclick="selectAgreement('affidavit')" data-type="affidavit" class="agree-tab bg-white/10 border border-white/20 px-3 py-2.5 rounded-xl text-[13px] font-bold">Affidavit</button><button onclick="selectAgreement('leave')" data-type="leave" class="agree-tab bg-white/10 border border-white/20 px-2 py-2.5 rounded-xl text-[12px] font-bold">Leave & License</button><button onclick="selectAgreement('shop')" data-type="shop" class="agree-tab bg-white/10 border border-white/20 px-3 py-2.5 rounded-xl text-[13px] font-bold">Shop</button><button onclick="selectAgreement('sale')" data-type="sale" class="agree-tab bg-white/10 border border-white/20 px-3 py-2.5 rounded-xl text-[13px] font-bold">Sale</button></div></div>
+<div class="mx-3 mt-3 grid grid-cols-2 gap-2"><div onclick="selectPlan('basic')" id="planBasic" class="glass rounded-[20px] p-4"><p class="font-black">BASIC ₹299</p><p class="text-[12px] mt-1 leading-relaxed">Legal PDF - 2 Pages<br>WhatsApp Delivery<br>1 Free Correction</p><p class="mt-2 bg-white/10 text-center py-2 rounded-lg text-[12px] font-bold">Select Basic</p></div><div onclick="selectPlan('premium')" id="planPremium" class="bg-amber-500 text-black rounded-[20px] p-4 border-4 border-white relative"><span class="absolute -top-2 -right-1 bg-black text-white text-[10px] px-2 py-0.5 rounded-full font-bold">MOST POPULAR</span><p class="font-black">PREMIUM ₹699</p><p class="text-[12px] mt-1 leading-relaxed">Everything in Basic<br>E-Stamp Guide<br>E-Sign Guide<br>10 Min Express<br>Unlimited Corrections - 7 Days</p><p class="mt-2 bg-black text-white text-center py-2 rounded-lg text-[12px] font-bold">✓ Selected</p></div></div>
+<div id="formSection" class="m-3 glass rounded-[24px] p-4"><p class="font-black text-[19px]" id="formTitle">Rent Agreement</p>
 <div id="rentForm">
 <label>Landlord / Owner Name *</label><input id="party1Name" placeholder="Enter full name" autocomplete="off">
 <label>Landlord Photo (Optional)</label><input id="party1Photo" type="file" accept="image/*" onchange="readPhoto(this,'party1')"><img id="party1Preview" class="photo-preview">
@@ -121,14 +87,16 @@ input[type=file]{padding:10px!important}
 <label>Tenant Mobile *</label><input id="party2Phone" type="tel" placeholder="Enter 10-digit mobile" autocomplete="off">
 <label>Full Property Address *</label><textarea id="propertyAddress" placeholder="Flat No, Building, Area, Pincode" rows="2"></textarea>
 <label>City / Village - Type Anywhere in Maharashtra</label><input id="cityInput" placeholder="Enter city or village" autocomplete="off">
+<div id="rentFields">
 <div class="grid grid-cols-2 gap-2"><div><label>Monthly Rent Rs *</label><input id="rent" type="number" value="15000" oninput="updateCalc()"></div><div><label>Deposit Rs *</label><input id="deposit" type="number" value="30000"></div></div>
 <div class="grid grid-cols-2 gap-2"><div><label>Duration</label><select id="duration" onchange="updateCalc()"><option value="11">11 Months</option><option value="6">6 Months</option><option value="12">12 Months</option><option value="24">24 Months</option></select></div><div><label>Start Date</label><input id="startDate" type="date"></div></div>
 <label>Furnishing</label><select id="furnish"><option>Unfurnished</option><option>Semi-Furnished</option><option>Fully Furnished</option></select>
+</div>
+<div id="saleDateWrap" class="hidden"><label>Agreement Date</label><input id="saleDate" type="date"></div>
 <div id="pgExtra" class="hidden"><label>PG Room Type</label><select id="pgRoom"><option>Single Sharing</option><option>Double Sharing</option><option>Triple Sharing</option></select></div>
 <div id="shopExtra" class="hidden"><label>Shop / Business Use</label><input id="shopUse" placeholder="Enter business type"></div>
-<div id="saleExtra" class="hidden"><label>Sale Amount / Total Consideration Rs</label><input id="saleAmount" placeholder="e.g. 5000000"><label>Sale - Payment / Token Details</label><input id="saleDetails" placeholder="Token, installments, etc."></div>
+<div id="saleExtra" class="hidden"><label>Sale Amount / Total Consideration Rs *</label><input id="saleAmount" type="number" placeholder="e.g. 5000000"><label>Sale - Payment / Token Details *</label><input id="saleDetails" placeholder="Token, installments, etc."></div>
 </div>
-
 <div id="affidavitForm" class="hidden">
 <label>Your Full Name *</label><input id="affName" placeholder="Enter full name as per Aadhaar" autocomplete="off">
 <label>Your Photo (Optional)</label><input id="affPhoto" type="file" accept="image/*" onchange="readPhoto(this,'aff')"><img id="affPreview" class="photo-preview">
@@ -139,294 +107,118 @@ input[type=file]{padding:10px!important}
 <label>City / Village</label><input id="affCity" placeholder="Enter city or village" autocomplete="off">
 <label>Affidavit Purpose *</label><select id="affPurpose" onchange="toggleAffFields()"><option>Name Correction</option><option>Address Proof</option><option>Bank / Aadhaar Correction</option><option>Income Certificate</option><option>Gap Certificate</option><option>Other - Write Below</option></select>
 <div id="affNameFields"><label>Old / Wrong Name</label><input id="affOldName" placeholder="Enter old name if any"><label>New / Correct Name</label><input id="affNewName" placeholder="Enter new correct name"></div>
-<label>Your Statement - Write in Your Own Words *</label><textarea id="affStatement" placeholder="Example: I declare that my address is... / I declare that my income is... / I declare that..." rows="3"></textarea>
+<label>Your Statement - Write in Your Own Words *</label><textarea id="affStatement" placeholder="Example: I declare that my address is..." rows="3"></textarea>
 </div>
-
-<div class="mt-4 bg-amber-500/10 border border-amber-500/30 rounded-xl p-3">
-<p class="font-bold text-[14px]">Price Calculator - <span id="calcAgreeName" class="text-amber-400">Rent Agreement</span></p>
-<div class="text-[13px] mt-2 space-y-1" id="calcRentBlock">
-<div class="flex justify-between"><span>Monthly Rent</span><b id="calcRent">₹15,000</b></div>
-<div class="flex justify-between"><span>Duration</span><b id="calcDuration">11 Months</b></div>
-<div class="flex justify-between"><span>Total Rent</span><b id="calcTotalRent">₹1,65,000</b></div>
-<div class="flex justify-between text-slate-400"><span>Est. E-Stamp (0.25%)*</span><b id="calcStamp">₹413</b></div>
+<div class="mt-4 bg-amber-500/10 border border-amber-500/30 rounded-xl p-3"><p class="font-bold text-[14px]">Price Calculator - <span id="calcAgreeName" class="text-amber-400">Rent Agreement</span></p><div class="text-[13px] mt-2 space-y-1" id="calcRentBlock"><div class="flex justify-between"><span>Monthly Rent</span><b id="calcRent">₹15,000</b></div><div class="flex justify-between"><span>Duration</span><b id="calcDuration">11 Months</b></div><div class="flex justify-between"><span>Total Rent</span><b id="calcTotalRent">₹1,65,000</b></div><div class="flex justify-between text-slate-400"><span>Est. E-Stamp (0.25%)*</span><b id="calcStamp">₹413</b></div></div><div id="calcSaleBlock" class="hidden text-[13px] mt-2 space-y-1"><div class="flex justify-between"><span>Sale Amount</span><b id="calcSaleAmount">-</b></div><div class="flex justify-between text-slate-400"><span>Note</span><b>Stamp as per Govt rules</b></div></div><div class="flex justify-between text-[13px] mt-1"><span>Service (<span id="calcPlanName">Premium</span>)</span><b id="calcService">₹699</b></div><div class="flex justify-between border-t border-white/10 pt-2 text-[15px]"><span class="font-bold">You Pay Now</span><b class="text-amber-400" id="calcPayNow">₹699</b></div><div class="flex justify-between text-[12px] text-slate-400"><span>Approx Total (Service + Stamp)</span><b id="calcGrand">₹1,112</b></div></div>
+<div class="flex gap-2 mt-4"><button onclick="previewAgreement(false)" class="flex-1 bg-white text-black py-3.5 rounded-xl font-bold text-[13px]">Preview - 2 Pages</button><button onclick="showStampGuide()" class="flex-1 bg-blue-600 py-3.5 rounded-xl font-bold text-[13px]">Stamp Guide</button></div>
+<div class="mt-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3 text-center"><p class="font-black text-[15px]">Step 1: Pay via UPI</p><p class="text-[12px] mt-1">UPI ID: <b>msgmeonmyemail-1@okhdfcbank</b></p><button onclick="payNow()" class="w-full mt-3 bg-amber-500 text-black py-3.5 rounded-xl font-black text-[14px]">Pay Rs <span id="payBtnPrice">699</span> via GPay / PhonePe</button><button onclick="copyUPI()" class="w-full mt-2 bg-white/10 py-2.5 rounded-xl font-bold text-[12px]">Copy UPI ID</button><p class="text-[11px] text-emerald-300 mt-2 font-bold">✓ Payment safe on GPay • If PDF not received, full help on WhatsApp</p></div>
+<div class="mt-3 bg-blue-500/10 border border-blue-500/30 rounded-xl p-3 text-center"><p class="font-black text-[15px]">Step 2: Send Details to Us</p><p class="text-[12px] text-slate-300 mt-1">Tap below - your details go to our WhatsApp. We verify payment.</p><button onclick="orderWhatsApp()" class="w-full mt-2 bg-emerald-500 text-black py-3.5 rounded-xl font-black text-[14px]">I Paid - Send Details on WhatsApp</button></div>
+<div class="mt-3 bg-amber-500/10 border border-amber-500/30 rounded-xl p-3 text-center"><p class="font-black text-[15px]">Step 3: Enter Unlock Code</p><p class="text-[12px] text-slate-300 mt-1">We send your personal code on WhatsApp after payment check.</p><label style="margin-top:10px">Unlock Code</label><div class="flex gap-2 mt-2"><input id="unlockInput" placeholder="Enter Your Code" type="text" maxlength="20" style="margin-top:0;text-transform:uppercase"><button onclick="unlockPDF()" id="unlockBtn" class="bg-amber-500 text-black px-4 rounded-xl font-black text-[13px] whitespace-nowrap">Unlock</button></div><p id="unlockStatus" class="text-[12px] mt-2 text-amber-400">🔒 PDF Locked - Pay first to unlock</p><p class="text-[11px] text-slate-400 mt-1">Test Code: MAW-1004 (for testing only)</p></div>
+<div id="shareBox" class="mt-3 bg-emerald-500/10 border border-emerald-500/40 rounded-xl p-3 text-center"><p class="font-bold text-[14px]">Final PDF Ready - 2 Pages</p><div id="lockedBtns" class="locked"><button onclick="createPDF()" class="w-full mt-2 bg-amber-500 text-black py-4 rounded-xl font-black text-[15px]">Create PDF - 2 Pages</button><button onclick="sharePDFFile()" class="w-full mt-2 bg-emerald-500 text-black py-3.5 rounded-xl font-black text-[14px]">Share PDF to WhatsApp</button><button onclick="downloadPDFOnly()" class="w-full mt-2 bg-white/10 py-3 rounded-xl font-bold text-[13px]">Open / Download PDF</button></div></div>
 </div>
-<div class="flex justify-between text-[13px] mt-1"><span>Service (<span id="calcPlanName">Premium</span>)</span><b id="calcService">₹699</b></div>
-<div class="flex justify-between border-t border-white/10 pt-2 text-[15px]"><span class="font-bold">You Pay Now</span><b class="text-amber-400" id="calcPayNow">₹699</b></div>
-<div class="flex justify-between text-[12px] text-slate-400"><span>Approx Total (Service + Stamp)</span><b id="calcGrand">₹1,112</b></div>
-</div>
-
-<div class="flex gap-2 mt-4"><button onclick="previewAgreement(false)" class="flex-1 bg-white text-black py-3.5 rounded-xl font-bold text-[13px]">Preview - Page 1 + 2</button><button onclick="showStampGuide()" class="flex-1 bg-blue-600 py-3.5 rounded-xl font-bold text-[13px]">Stamp Guide</button></div>
-
-<div class="mt-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-3 text-center">
-<p class="font-black text-[15px]" data-en="Step 1: Pay via UPI" data-mr="स्टेप १: UPI ने पेमेंट करा">Step 1: Pay via UPI</p><p class="text-[12px] mt-1">UPI ID: <b>msgmeonmyemail-1@okhdfcbank</b></p>
-<button onclick="payNow()" class="w-full mt-3 bg-amber-500 text-black py-3.5 rounded-xl font-black text-[14px]">Pay Rs <span id="payBtnPrice">699</span> via GPay / PhonePe</button>
-<button onclick="copyUPI()" class="w-full mt-2 bg-white/10 py-2.5 rounded-xl font-bold text-[12px]">Copy UPI ID</button>
-<p class="text-[11px] text-emerald-300 mt-2 font-bold" data-en="✓ Payment safe on GPay • If PDF not received, full help on WhatsApp" data-mr="✓ GPay वर पेमेंट सुरक्षित • PDF नाही मिळाला तर WhatsApp वर पूर्ण मदत">✓ Payment safe on GPay • If PDF not received, full help on WhatsApp</p>
-</div>
-
-<div class="mt-3 bg-blue-500/10 border border-blue-500/30 rounded-xl p-3 text-center">
-<p class="font-black text-[15px]" data-en="Step 2: Send Details to Us" data-mr="स्टेप २: आम्हाला माहिती पाठवा">Step 2: Send Details to Us</p>
-<p class="text-[12px] text-slate-300 mt-1">Tap below - your details go to our WhatsApp. We verify payment.</p>
-<button onclick="orderWhatsApp()" class="w-full mt-2 bg-emerald-500 text-black py-3.5 rounded-xl font-black text-[14px]">I Paid - Send Details on WhatsApp</button>
-</div>
-
-<div class="mt-3 bg-amber-500/10 border border-amber-500/30 rounded-xl p-3 text-center">
-<p class="font-black text-[15px]" data-en="Step 3: Enter Unlock Code" data-mr="स्टेप ३: अनलॉक कोड टाका">Step 3: Enter Unlock Code</p>
-<p class="text-[12px] text-slate-300 mt-1">We send your personal code on WhatsApp after payment check.</p>
-<label style="margin-top:10px">Unlock Code</label>
-<div class="flex gap-2 mt-2"><input id="unlockInput" placeholder="Enter Your Code" type="text" maxlength="20" style="margin-top:0;text-transform:uppercase"><button onclick="unlockPDF()" id="unlockBtn" class="bg-amber-500 text-black px-4 rounded-xl font-black text-[13px] whitespace-nowrap">Unlock</button></div>
-<p id="unlockStatus" class="text-[12px] mt-2 text-amber-400">🔒 PDF Locked - Pay first to unlock</p>
-<p class="text-[11px] text-slate-400 mt-1">Test Code: MAW-1004 (for testing only)</p>
-</div>
-
-<div id="shareBox" class="mt-3 bg-emerald-500/10 border border-emerald-500/40 rounded-xl p-3 text-center">
-<p class="font-bold text-[14px]">Final PDF Ready - 2 Pages</p>
-<div id="lockedBtns" class="locked">
-<button onclick="createPDF()" class="w-full mt-2 bg-amber-500 text-black py-4 rounded-xl font-black text-[15px]">Create PDF - Page 1 + 2</button>
-<button onclick="sharePDFFile()" class="w-full mt-2 bg-emerald-500 text-black py-3.5 rounded-xl font-black text-[14px]">Share PDF to WhatsApp</button>
-<button onclick="downloadPDFOnly()" class="w-full mt-2 bg-white/10 py-3 rounded-xl font-bold text-[13px]">Open / Download PDF</button>
-</div>
-</div>
-
-</div>
-
-<div class="m-3 glass rounded-[20px] p-4 text-center">
-<p class="font-black text-[16px]">MyAgreementWala</p>
-<p class="text-[12px] text-slate-300 mt-1">Make Agreement Easy - We help customers in Maharashtra create Rent Agreement PDF quickly, easily and affordably.</p>
-<div class="flex justify-center gap-3 mt-3 text-[12px] font-bold">
-<a href="#" onclick="alert('Terms & Conditions: PDF is for personal use only. Agreement must be signed by both Owner & Tenant. Stamp Paper / Notary may be required as per Maharashtra Govt rules. Payment is non-refundable after Code is shared and PDF is downloaded. We are not a government website. We provide document format assistance only.');return false;" class="text-emerald-400">Terms</a>
-<a href="#" onclick="alert('Privacy Policy: Your details are used only to create PDF and send on WhatsApp. We do not share your data with third parties. Aadhaar photos stay only in your phone browser.');return false;" class="text-emerald-400">Privacy</a>
-<a href="#" onclick="alert('Refund Policy: No refund after Code shared and PDF downloaded. If PDF not received, contact on WhatsApp 8329887823.');return false;" class="text-emerald-400">Refund</a>
-<a href="https://wa.me/918329887823" class="text-emerald-400">Contact Us</a>
-</div>
-<p class="text-[12px] text-slate-400 mt-3">WhatsApp: 8329887823</p>
-<p class="text-[11px] text-slate-500 mt-1">Govt Links: igrmaharashtra.gov.in | aaplesarkar.mahaonline.gov.in</p>
-<p class="text-[12px] font-bold mt-3">© 2026 MyAgreementWala - All Rights Reserved.</p>
-</div>
-
-<div id="previewModal" class="fixed inset-0 bg-black/80 z-[100] hidden overflow-y-auto p-3"><div class="max-w-[680px] mx-auto my-4"><div class="no-print flex justify-between items-center bg-white text-black rounded-t-[20px] px-4 py-3"><p class="font-black text-[15px]" id="previewTitle">PREVIEW - PAGE 1 + 2</p><button onclick="closePreview()" class="bg-black text-white px-3 py-1 rounded-full text-[12px]">Close</button></div><div class="agreement-paper p-5" id="agreementPreview"><div class="flex justify-between" style="border-bottom:3px solid #111;padding-bottom:10px"><div class="flex items-center gap-2"><div class="maw-logo" style="width:38px;height:38px"><span style="font-size:14px">MAW</span></div><div><p class="font-black text-[22px] leading-none">MyAgreement<span class="text-amber-600">Wala</span></p><p class="text-[10px] text-slate-500">MAKE AGREEMENT EASY • 100% ONLINE</p></div></div><div class="text-right"><p class="text-[11px] text-slate-500">Date: <span id="docDate">-</span> • Page 1</p></div></div><p class="text-center font-bold text-[18px] my-4 underline" id="docTitle">RENT AGREEMENT</p><p class="text-[13px]">This Agreement is executed on <b id="pStart">-</b> at <b id="pCity">-</b>, Maharashtra, by and between:</p><div class="watermark-box mt-4" id="watermarkBox"><div id="agreementText"></div></div><div class="mt-5 pt-3 border-t flex justify-between text-[10px] text-slate-500"><span>MyAgreementWala • 8329887823</span><span id="footerPlan"></span></div></div><div class="no-print bg-white text-black rounded-b-[20px] p-4"><p class="text-center text-[12px] font-bold text-red-600 mb-2">SAMPLE Preview Only - Pay to get Original PDF without SAMPLE.</p><button onclick="closePreview()" class="w-full bg-black text-white py-3 rounded-xl font-bold text-[13px]">Close Preview - Go to Pay</button></div></div></div>
-<div id="stampModal" class="fixed inset-0 bg-black/80 z-[100] hidden overflow-y-auto p-3"><div class="bg-white text-black rounded-[20px] max-w-[600px] mx-auto p-5 my-4"><div class="flex justify-between"><p class="font-black text-[18px]">How to Get Stamped?</p><button onclick="closeStampGuide()" class="bg-black text-white px-3 py-1 rounded-full text-[12px]">Close</button></div><div class="mt-4 space-y-3 text-[13px]"><div class="bg-amber-50 border rounded-xl p-3"><p class="font-bold">Step 1: Stamp</p><p>Rent: 0.25% of total rent. Affidavit: Rs 100 Stamp Paper.</p></div><div class="bg-blue-50 border rounded-xl p-3"><p class="font-bold">Step 2: Where?</p><p>Online: gras.mahakosh.gov.in OR Nearest Vendor / Cyber Cafe in your village.</p></div><div class="bg-emerald-50 border rounded-xl p-3"><p class="font-bold">Step 3: Print & Sign</p><p>Print PDF, both sign, 2 witness sign, Done.</p></div></div><button onclick="orderWhatsApp()" class="w-full mt-4 bg-emerald-500 text-black py-3 rounded-xl font-bold">Create My Agreement</button></div></div>
+<div class="m-3 glass rounded-[20px] p-4 text-center"><p class="font-black text-[16px]">MyAgreementWala</p><p class="text-[12px] text-slate-300 mt-1">Make Agreement Easy - We help customers in Maharashtra create Rent Agreement PDF quickly, easily and affordably.</p><div class="flex justify-center gap-3 mt-3 text-[12px] font-bold"><a href="#" onclick="alert('Terms: PDF is for personal use only. Agreement must be signed by both parties. Stamp / Notary may be required as per Maharashtra Govt rules. Payment is non-refundable after Code is shared. We are not a government website.');return false;" class="text-emerald-400">Terms</a><a href="#" onclick="alert('Privacy: Your details are used only to create PDF. Aadhaar photos stay only in your phone browser.');return false;" class="text-emerald-400">Privacy</a><a href="#" onclick="alert('Refund: No refund after Code shared and PDF downloaded. If PDF not received, contact on WhatsApp 8329887823.');return false;" class="text-emerald-400">Refund</a><a href="https://wa.me/918329887823" class="text-emerald-400">Contact Us</a></div><p class="text-[12px] text-slate-400 mt-3">WhatsApp: 8329887823</p><p class="text-[11px] text-slate-500 mt-1">Govt Links: igrmaharashtra.gov.in | aaplesarkar.mahaonline.gov.in</p><p class="text-[12px] font-bold mt-3">© 2026 MyAgreementWala - All Rights Reserved.</p></div>
+<div id="previewModal" class="fixed inset-0 bg-black/80 z-[100] hidden overflow-y-auto p-3"><div class="max-w-[680px] mx-auto my-4"><div class="flex justify-between items-center bg-white text-black rounded-t-[20px] px-4 py-3"><p class="font-black text-[15px]" id="previewTitle">PREVIEW - 2 PAGES</p><button onclick="closePreview()" class="bg-black text-white px-3 py-1 rounded-full text-[12px]">Close</button></div><div class="agreement-paper" id="agreementPreview"><div class="watermark-box"><div id="agreementText"></div></div></div><div class="bg-white text-black rounded-b-[20px] p-4"><p class="text-center text-[12px] font-bold text-red-600 mb-2">SAMPLE Preview Only - Pay to get Original PDF without SAMPLE.</p><button onclick="closePreview()" class="w-full bg-black text-white py-3 rounded-xl font-bold text-[13px]">Close Preview - Go to Pay</button></div></div></div>
+<div id="stampModal" class="fixed inset-0 bg-black/80 z-[100] hidden overflow-y-auto p-3"><div class="bg-white text-black rounded-[20px] max-w-[600px] mx-auto p-5 my-4"><div class="flex justify-between"><p class="font-black text-[18px]">How to Get Stamped?</p><button onclick="closeStampGuide()" class="bg-black text-white px-3 py-1 rounded-full text-[12px]">Close</button></div><div class="mt-4 space-y-3 text-[13px]"><div class="bg-amber-50 border rounded-xl p-3"><p class="font-bold">Step 1: Stamp</p><p>Rent: 0.25% of total rent. Affidavit: Rs 100 Stamp Paper. Sale: As per Govt rules.</p></div><div class="bg-blue-50 border rounded-xl p-3"><p class="font-bold">Step 2: Where?</p><p>Online: gras.mahakosh.gov.in OR Nearest Vendor / Cyber Cafe.</p></div><div class="bg-emerald-50 border rounded-xl p-3"><p class="font-bold">Step 3: Print & Sign</p><p>Print PDF, both sign, 2 witness sign, Done.</p></div></div><button onclick="orderWhatsApp()" class="w-full mt-4 bg-emerald-500 text-black py-3 rounded-xl font-bold">Create My Agreement</button></div></div>
 <div id="toast" class="toast bg-white text-black px-4 py-3 rounded-full text-[13px] font-bold shadow-2xl">Done</div>
-
 <script>
-let currentLang='en';
-let selectedPlan='premium', planPrice=699, selectedAgree='rent', lastDocId='', lastPDFBlob=null, lastFileName='', lastPDFUrl=null, isUnlocked=false;
-let YOUR_WHATSAPP='918329887823'; let YOUR_UPI='msgmeonmyemail-1@okhdfcbank';
+let currentLang='en';let selectedPlan='premium',planPrice=699,selectedAgree='rent',lastDocId='',lastPDFBlob=null,lastFileName='',lastPDFUrl=null,isUnlocked=false;
+let YOUR_WHATSAPP='918329887823';let YOUR_UPI='msgmeonmyemail-1@okhdfcbank';
 const SHEET_URL="https://script.google.com/macros/s/AKfycbx1wE2HqmPz56qxFBu8xGjTjF_AO-QdNAUSl0kQkdy7EQHjFIhb5m4IoT2shZKvoIGp/exec";
 let photos={party1:'',party2:'',aff:'',party1Aadhaar:'',party2Aadhaar:'',affAadhaar:''};
-let AGREE_NAMES={rent:'Rent Agreement',pg:'PG Agreement',affidavit:'Affidavit',leave:'Leave & License Agreement',shop:'Shop / Commercial Agreement',sale:'Sale Agreement'};
+let AGREE_NAMES={rent:'Residential Rental Agreement',pg:'Paying Guest (PG) Accommodation Agreement',affidavit:'Affidavit / Declaration',leave:'Residential Leave and License Agreement',shop:'Shop / Commercial Rental Agreement',sale:'Agreement for Sale of Immovable Property'};
 let AGREE_NAMES_MR={rent:'भाडे करार',pg:'पीजी करार',affidavit:'शपथपत्र',leave:'लीव्ह अँड लायसन्स करार',shop:'दुकान / व्यावसायिक करार',sale:'विक्री करार'};
-function toggleLang(){
-currentLang=currentLang==='en'?'mr':'en';
-document.getElementById('langBtn').innerText=currentLang==='en'?'मराठी':'English';
-document.querySelectorAll('[data-en]').forEach(el=>{el.innerText=el.getAttribute(currentLang==='en'?'data-en':'data-mr');});
-let mrTabs={rent:'भाडे',pg:'पीजी',affidavit:'शपथपत्र',leave:'लीव्ह अँड लायसन्स',shop:'दुकान',sale:'विक्री'};
-let enTabs={rent:'Rent',pg:'PG',affidavit:'Affidavit',leave:'Leave & License',shop:'Shop',sale:'Sale'};
-document.querySelectorAll('.agree-tab').forEach(b=>{let t=b.getAttribute('data-type'); b.innerText=currentLang==='mr'?mrTabs[t]:enTabs[t];});
-document.getElementById('formTitle').innerText=currentLang==='mr'?AGREE_NAMES_MR[selectedAgree]:AGREE_NAMES[selectedAgree];
-document.getElementById('calcAgreeName').innerText=currentLang==='mr'?AGREE_NAMES_MR[selectedAgree]:AGREE_NAMES[selectedAgree];
-showToast(currentLang==='mr'?'मराठी मध्ये बदलले ✓':'Changed to English ✓');
-}
+function toggleLang(){currentLang=currentLang==='en'?'mr':'en';document.getElementById('langBtn').innerText=currentLang==='en'?'मराठी':'English';let mrTabs={rent:'भाडे',pg:'पीजी',affidavit:'शपथपत्र',leave:'लीव्ह अँड लायसन्स',shop:'दुकान',sale:'विक्री'};let enTabs={rent:'Rent',pg:'PG',affidavit:'Affidavit',leave:'Leave & License',shop:'Shop',sale:'Sale'};document.querySelectorAll('.agree-tab').forEach(b=>{let t=b.getAttribute('data-type');b.innerText=currentLang==='mr'?mrTabs[t]:enTabs[t];});document.getElementById('formTitle').innerText=currentLang==='mr'?AGREE_NAMES_MR[selectedAgree]:AGREE_NAMES[selectedAgree];document.getElementById('calcAgreeName').innerText=currentLang==='mr'?AGREE_NAMES_MR[selectedAgree]:AGREE_NAMES[selectedAgree];showToast(currentLang==='mr'?'मराठी मध्ये बदलले ✓':'Changed to English ✓');}
 function showToast(m){let t=document.getElementById('toast');t.innerText=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
-function readPhoto(input,key){let f=input.files[0];if(!f) return;let r=new FileReader();r.onload=e=>{let img=new Image();img.onload=()=>{let canvas=document.createElement('canvas');canvas.width=img.width;canvas.height=img.height;let ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0);photos[key]=canvas.toDataURL('image/jpeg',0.82);let map={party1:'party1Preview',party2:'party2Preview',aff:'affPreview',party1Aadhaar:'party1AadhaarPreview',party2Aadhaar:'party2AadhaarPreview',affAadhaar:'affAadhaarPreview'};let imgEl=document.getElementById(map[key]);if(imgEl){imgEl.src=photos[key];imgEl.style.display='block';}showToast('Photo Added ✓');};img.src=e.target.result;};r.readAsDataURL(f);}
+function readPhoto(input,key){let f=input.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{let img=new Image();img.onload=()=>{let c=document.createElement('canvas');c.width=img.width;c.height=img.height;let ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(img,0,0);photos[key]=c.toDataURL('image/jpeg',0.82);let map={party1:'party1Preview',party2:'party2Preview',aff:'affPreview',party1Aadhaar:'party1AadhaarPreview',party2Aadhaar:'party2AadhaarPreview',affAadhaar:'affAadhaarPreview'};let el=document.getElementById(map[key]);if(el){el.src=photos[key];el.style.display='block';}showToast('Photo Added ✓');};img.src=e.target.result;};r.readAsDataURL(f);}
 function toggleAffFields(){let p=document.getElementById('affPurpose').value;document.getElementById('affNameFields').style.display=(p==='Name Correction')?'block':'none';}
-function selectAgreement(type){selectedAgree=type;document.querySelectorAll('.agree-tab').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-type="${type}"]`).classList.add('active');document.getElementById('formTitle').innerText=currentLang==='mr'?AGREE_NAMES_MR[type]:AGREE_NAMES[type];document.getElementById('calcAgreeName').innerText=currentLang==='mr'?AGREE_NAMES_MR[type]:AGREE_NAMES[type];document.getElementById('docTitle').innerText=AGREE_NAMES[type].toUpperCase();let isAff=type==='affidavit';document.getElementById('rentForm').classList.toggle('hidden',isAff);document.getElementById('affidavitForm').classList.toggle('hidden',!isAff);document.getElementById('pgExtra').classList.toggle('hidden',type!=='pg');document.getElementById('shopExtra').classList.toggle('hidden',type!=='shop');document.getElementById('saleExtra').classList.toggle('hidden',type!=='sale');document.getElementById('calcRentBlock').style.display=isAff?'none':'block';updateCalc();}
+function selectAgreement(type){selectedAgree=type;document.querySelectorAll('.agree-tab').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-type="${type}"]`).classList.add('active');document.getElementById('formTitle').innerText=currentLang==='mr'?AGREE_NAMES_MR[type]:AGREE_NAMES[type];document.getElementById('calcAgreeName').innerText=currentLang==='mr'?AGREE_NAMES_MR[type]:AGREE_NAMES[type];let isAff=type==='affidavit';let isSale=type==='sale';document.getElementById('rentForm').classList.toggle('hidden',isAff);document.getElementById('affidavitForm').classList.toggle('hidden',!isAff);document.getElementById('pgExtra').classList.toggle('hidden',type!=='pg');document.getElementById('shopExtra').classList.toggle('hidden',type!=='shop');document.getElementById('saleExtra').classList.toggle('hidden',!isSale);document.getElementById('rentFields').classList.toggle('hidden',isSale);document.getElementById('saleDateWrap').classList.toggle('hidden',!isSale);document.getElementById('calcRentBlock').style.display=isAff||isSale?'none':'block';document.getElementById('calcSaleBlock').classList.toggle('hidden',!isSale);updateCalc();}
 function selectPlan(p){selectedPlan=p;planPrice=p==='basic'?299:699;document.getElementById('planBasic').className=p==='basic'?'bg-amber-500 text-black rounded-[20px] p-4 border-4 border-white':'glass rounded-[20px] p-4';document.getElementById('planPremium').className=p==='premium'?'bg-amber-500 text-black rounded-[20px] p-4 border-4 border-white relative':'glass rounded-[20px] p-4';updateCalc();}
-function updateCalc(){let rent=parseInt(document.getElementById('rent')?.value)||0;let dur=parseInt(document.getElementById('duration')?.value)||11;let total=rent*dur;let stamp=Math.round(total*0.0025);let grand=planPrice+stamp;let city=document.getElementById('cityInput')?.value||document.getElementById('affCity')?.value||'';document.getElementById('calcRent').innerText='₹'+rent.toLocaleString('en-IN');document.getElementById('calcDuration').innerText=dur+' Months';document.getElementById('calcTotalRent').innerText='₹'+total.toLocaleString('en-IN');document.getElementById('calcStamp').innerText='₹'+stamp.toLocaleString('en-IN');document.getElementById('calcService').innerText='₹'+planPrice;document.getElementById('calcPlanName').innerText=selectedPlan==='basic'?'Basic':'Premium';document.getElementById('calcPayNow').innerText='₹'+planPrice;document.getElementById('calcGrand').innerText='₹'+grand.toLocaleString('en-IN');document.getElementById('payBtnPrice').innerText=planPrice;document.getElementById('pCity').innerText=city||'-';}
+function updateCalc(){let rent=parseInt(document.getElementById('rent')?.value)||0;let dur=parseInt(document.getElementById('duration')?.value)||11;let total=rent*dur;let stamp=Math.round(total*0.0025);let grand=planPrice+stamp;let saleAmt=parseInt(document.getElementById('saleAmount')?.value)||0;document.getElementById('calcRent').innerText='₹'+rent.toLocaleString('en-IN');document.getElementById('calcDuration').innerText=dur+' Months';document.getElementById('calcTotalRent').innerText='₹'+total.toLocaleString('en-IN');document.getElementById('calcStamp').innerText='₹'+stamp.toLocaleString('en-IN');document.getElementById('calcSaleAmount').innerText=saleAmt?'₹'+saleAmt.toLocaleString('en-IN'):'-';document.getElementById('calcService').innerText='₹'+planPrice;document.getElementById('calcPlanName').innerText=selectedPlan==='basic'?'Basic':'Premium';document.getElementById('calcPayNow').innerText='₹'+planPrice;document.getElementById('calcGrand').innerText=selectedAgree==='sale'?'₹'+planPrice.toLocaleString('en-IN')+' + Stamp':'₹'+grand.toLocaleString('en-IN');document.getElementById('payBtnPrice').innerText=planPrice;}
 function getData(){
-  if(selectedAgree==='affidavit'){return {aff:true,name:document.getElementById('affName').value||'',father:document.getElementById('affFather').value||'',phone:document.getElementById('affPhone').value||'',address:document.getElementById('affAddress').value||'',city:document.getElementById('affCity').value||'',purpose:document.getElementById('affPurpose').value,oldName:document.getElementById('affOldName').value||'',newName:document.getElementById('affNewName').value||'',statement:document.getElementById('affStatement').value||'',start:document.getElementById('startDate')?.value||new Date().toISOString().split('T')[0]};}
-  return {aff:false,p1:document.getElementById('party1Name').value||'',p1p:document.getElementById('party1Phone').value||'',p2:document.getElementById('party2Name').value||'',p2p:document.getElementById('party2Phone').value||'',address:document.getElementById('propertyAddress').value||'',city:document.getElementById('cityInput').value||'',rent:document.getElementById('rent').value||'15000',deposit:document.getElementById('deposit').value||'30000',duration:document.getElementById('duration').value||'11',start:document.getElementById('startDate').value||new Date().toISOString().split('T')[0],furnish:document.getElementById('furnish').value||'Unfurnished',pgRoom:document.getElementById('pgRoom')?.value||'',shopUse:document.getElementById('shopUse')?.value||'',saleAmount:document.getElementById('saleAmount')?.value||'',saleDetails:document.getElementById('saleDetails')?.value||''};
-}
+  let mainStart=document.getElementById('startDate')?.value||new Date().toISOString().split('T')[0];
+  let saleStart=document.getElementById('saleDate')?.value||mainStart;
+  if(selectedAgree==='affidavit'){return {aff:true,name:document.getElementById('affName').value||'',father:document.getElementById('affFather').value||'',phone:document.getElementById('affPhone').value||'',address:document.getElementById('affAddress').value||'',city:document.getElementById('affCity').value||'',purpose:document.getElementById('affPurpose').value,oldName:document.getElementById('affOldName').value||'',newName:document.getElementById('affNewName').value||'',statement:document.getElementById('affStatement').value||'',start:mainStart};}
+  return {aff:false,p1:document.getElementById('party1Name').value||'',p1p:document.getElementById('party1Phone').value||'',p2:document.getElementById('party2Name').value||'',p2p:document.getElementById('party2Phone').value||'',address:document.getElementById('propertyAddress').value||'',city:document.getElementById('cityInput').value||'',rent:document.getElementById('rent').value||'15000',deposit:document.getElementById('deposit').value||'30000',duration:document.getElementById('duration').value||'11',start:selectedAgree==='sale'?saleStart:mainStart,furnish:document.getElementById('furnish').value||'Unfurnished',pgRoom:document.getElementById('pgRoom')?.value||'',shopUse:document.getElementById('shopUse')?.value||'',saleAmount:document.getElementById('saleAmount')?.value||'',saleDetails:document.getElementById('saleDetails')?.value||''};}
 function getSampleData(){return {aff:false,p1:'Rahul Patil',p1p:'9876543210',p2:'Amit Kumar',p2p:'9876543211',address:'Flat 101, Sample Building, Main Road',city:'Pune',rent:'15000',deposit:'30000',duration:'11',start:new Date().toISOString().split('T')[0],furnish:'Semi-Furnished',pgRoom:'Double Sharing',shopUse:'General Store',saleAmount:'5000000',saleDetails:'Token 50000'};}
-function buildHTML(isFinal, sampleMode){
-  let d=sampleMode?getSampleData():getData();
-  let usePhotos=sampleMode?{party1:'',party2:'',party1Aadhaar:'',party2Aadhaar:''}:photos;
-  let end=new Date(d.start);if(!d.aff) end.setMonth(end.getMonth()+parseInt(d.duration));let endStr=end.toISOString().split('T')[0];
-  if(!lastDocId) lastDocId='ORD-'+Math.floor(1000+Math.random()*9000);
-  document.getElementById('docDate').innerText=d.start;document.getElementById('pStart').innerText=d.start;document.getElementById('pCity').innerText=d.city||'-';document.getElementById('docTitle').innerText=AGREE_NAMES[selectedAgree].toUpperCase();
-  if(d.aff){
-    let photoHtml=photos.aff&&!sampleMode?`<img src="${photos.aff}" style="width:70px;height:70px;object-fit:cover;border-radius:10px;margin-bottom:8px">`:'';
-    let namePart=d.purpose==='Name Correction'?`<p class="mt-3 text-[13px] leading-relaxed">I, <b>${d.name}</b>${d.father?`, son/daughter of <b>${d.father}</b>`:''}, residing at ${d.address}, ${d.city}, declare my correct name is <b>${d.newName||d.name}</b> and earlier it was <b>${d.oldName||'-'}</b>. Both names belong to same person.</p>`:`<p class="mt-3 text-[13px] leading-relaxed">I, <b>${d.name}</b>${d.father?`, son/daughter of <b>${d.father}</b>`:''}, residing at ${d.address}, ${d.city}, solemnly declare as under:</p>`;
-    let stmt=d.statement?`<p class="mt-2 text-[13px] leading-relaxed">${d.statement}</p>`:'';
-    let page2 = `<div style="page-break-before:always;border-top:3px solid #111;padding-top:14px;margin-top:20px"><p class="text-center font-bold text-[16px]">PAGE 2 - ID PROOFS</p><p class="text-[12px] text-center text-slate-500 mt-1">Applicant Photo + Aadhaar (Front) - Optional</p><div class="id-grid">${photos.aff&&!sampleMode?`<div class="id-box"><p class="sig-label">APPLICANT PHOTO</p><img src="${photos.aff}"></div>`:''}${photos.affAadhaar&&!sampleMode?`<div class="id-box"><p class="sig-label">APPLICANT AADHAAR FRONT</p><img src="${photos.affAadhaar}"></div>`:''}${!photos.aff&&!photos.affAadhaar&&!sampleMode?`<p class="text-[12px] text-slate-500">No ID photo uploaded - Attach if available</p>`:''}${sampleMode?`<div class="id-box"><p class="sig-label">APPLICANT PHOTO - SAMPLE</p><div style="height:110px;background:#f3f4f6;display:grid;place-items:center">SAMPLE PHOTO</div></div><div class="id-box"><p class="sig-label">AADHAAR FRONT - SAMPLE</p><div style="height:110px;background:#f3f4f6;display:grid;place-items:center">SAMPLE AADHAAR</div></div>`:''}</div><p class="font-bold text-[15px] mt-6">Signatures</p><div class="sig-grid"><div class="sig-box"><p class="sig-label">APPLICANT</p><p class="sig-name">${d.name}</p><div class="sig-line"></div><p class="sig-date">Signature & Date</p></div><div class="sig-box dashed"><p class="sig-label">NOTARY / WITNESS</p><p class="sig-name">Seal & Sign</p><div class="sig-line"></div><p class="sig-date">Signature & Date</p></div></div></div>`;
-    return `${photoHtml}<table class="doc-table"><tr><td>Full Name</td><td><b>${d.name}</b></td></tr>${d.father?`<tr><td>Father / Husband</td><td>${d.father}</td></tr>`:''}<tr><td>Mobile</td><td>${d.phone}</td></tr><tr><td>Purpose</td><td>${d.purpose}</td></tr>${d.purpose==='Name Correction'?`<tr><td>Old Name</td><td>${d.oldName||'-'}</td></tr><tr><td>New Name</td><td>${d.newName||d.name}</td></tr>`:''}<tr><td>Address</td><td>${d.address}, ${d.city}</td></tr></table>${namePart}${stmt}<p class="font-bold text-[15px] mt-6">Signatures - Page 1</p><div class="sig-grid"><div class="sig-box"><p class="sig-label">APPLICANT</p><p class="sig-name">${d.name}</p><div class="sig-line"></div><p class="sig-date">Signature & Date</p></div><div class="sig-box dashed"><p class="sig-label">NOTARY</p><p class="sig-name">Seal & Sign</p><div class="sig-line"></div><p class="sig-date">Signature & Date</p></div></div>${page2}`;
-  }
-  let extra=selectedAgree==='pg'?`<tr><td>Room</td><td>${d.pgRoom}</td></tr>`:selectedAgree==='shop'?`<tr><td>Business</td><td>${d.shopUse}</td></tr>`:selectedAgree==='sale'?`<tr><td>Sale Amount</td><td>Rs. ${d.saleAmount||'-'}</td></tr><tr><td>Sale Details</td><td>${d.saleDetails||'-'}</td></tr>`:'';
-  let page2Photos = sampleMode?`<div class="id-grid"><div class="id-box"><p class="sig-label">OWNER PHOTO - SAMPLE</p><div style="height:110px;background:#f3f4f6;display:grid;place-items:center">SAMPLE PHOTO</div></div><div class="id-box"><p class="sig-label">OWNER AADHAAR FRONT - SAMPLE</p><div style="height:110px;background:#f3f4f6;display:grid;place-items:center">SAMPLE AADHAAR</div></div><div class="id-box"><p class="sig-label">TENANT PHOTO - SAMPLE</p><div style="height:110px;background:#f3f4f6;display:grid;place-items:center">SAMPLE PHOTO</div></div><div class="id-box"><p class="sig-label">TENANT AADHAAR FRONT - SAMPLE</p><div style="height:110px;background:#f3f4f6;display:grid;place-items:center">SAMPLE AADHAAR</div></div></div>`
-  :`<div class="id-grid">${usePhotos.party1?`<div class="id-box"><p class="sig-label">OWNER PHOTO</p><img src="${usePhotos.party1}"></div>`:''}${usePhotos.party1Aadhaar?`<div class="id-box"><p class="sig-label">OWNER AADHAAR FRONT</p><img src="${usePhotos.party1Aadhaar}"></div>`:''}${usePhotos.party2?`<div class="id-box"><p class="sig-label">TENANT PHOTO</p><img src="${usePhotos.party2}"></div>`:''}${usePhotos.party2Aadhaar?`<div class="id-box"><p class="sig-label">TENANT AADHAAR FRONT</p><img src="${usePhotos.party2Aadhaar}"></div>`:''}${!usePhotos.party1&&!usePhotos.party1Aadhaar&&!usePhotos.party2&&!usePhotos.party2Aadhaar?`<p class="text-[12px] text-slate-500">No ID photos uploaded - Attach if available. Paste Aadhaar copy here before print.</p>`:''}</div>`;
-  return `<table class="doc-table"><tr><td>Party 1</td><td><b>${d.p1}</b><br>${d.p1p}</td></tr><tr><td>Party 2</td><td><b>${d.p2}</b><br>${d.p2p}</td></tr><tr><td>Property</td><td>${d.address}, ${d.city}, Maharashtra</td></tr><tr><td>Duration</td><td><b>${d.duration} Months</b> - ${d.start} to ${endStr}</td></tr><tr><td>Rent</td><td><b>₹ ${parseInt(d.rent).toLocaleString('en-IN')} / month</b></td></tr><tr><td>Deposit</td><td><b>₹ ${parseInt(d.deposit).toLocaleString('en-IN')}</b> Refundable</td></tr><tr><td>Furnishing</td><td>${d.furnish}</td></tr>${extra}</table><ol class="text-[13px] mt-4 pl-5 list-decimal space-y-1"><li>Use for ${selectedAgree==='shop'?'Commercial':selectedAgree==='sale'?'Sale / Transfer':'Residential'} only.</li><li>No sub-letting without consent.</li><li>Rent by 5th of every month.</li><li>Deposit refunded after dues deduction.</li><li>1 Month Notice.</li><li>Vacant possession on expiry.</li><li>Maharashtra laws apply.</li></ol>
-  <p class="font-bold text-[15px] mt-6">Signatures - Page 1</p>
-  <div class="sig-grid">
-    <div class="sig-box"><p class="sig-label">LANDLORD / PARTY 1</p><p class="sig-name">${d.p1}</p><div class="sig-line"></div><p class="sig-date">Signature & Date</p></div>
-    <div class="sig-box"><p class="sig-label">TENANT / PARTY 2</p><p class="sig-name">${d.p2}</p><div class="sig-line"></div><p class="sig-date">Signature & Date</p></div>
-  </div>
-  <div style="page-break-before:always;border-top:3px solid #111;padding-top:14px;margin-top:20px">
-  <p class="text-center font-bold text-[16px]">PAGE 2 - ID PROOFS & WITNESS</p><p class="text-[12px] text-center text-slate-500 mt-1">Owner Photo + Aadhaar Front • Tenant Photo + Aadhaar Front</p>
-  ${page2Photos}
-  <p class="font-bold text-[15px] mt-6">Witness Signatures - Page 2</p>
-  <div class="sig-grid">
-    <div class="sig-box dashed"><p class="sig-label">WITNESS 1</p><p class="sig-name">Name:</p><div class="sig-line"></div><p class="sig-date">Signature & Date</p></div>
-    <div class="sig-box dashed"><p class="sig-label">WITNESS 2</p><p class="sig-name">Name:</p><div class="sig-line"></div><p class="sig-date">Signature & Date</p></div>
-  </div>
-  <p class="text-[11px] text-slate-500 mt-4 text-center">MyAgreementWala • WhatsApp 8329887823 • © 2026 MyAgreementWala - All Rights Reserved.</p>
-  </div>`;
+function getDocContent(d){
+  let end=new Date(d.start); if(!d.aff) end.setMonth(end.getMonth()+parseInt(d.duration||11)); let endStr=end.toISOString().split('T')[0];
+  let fmtSale=d.saleAmount? 'Rs. '+parseInt(d.saleAmount).toLocaleString('en-IN') : '-';
+  let map={
+    rent:{title:'Residential Rental Agreement',opening:'This Rental Agreement is executed on '+d.start+' at '+(d.city||'-')+', Maharashtra.',parties:'LANDLORD: Name '+d.p1+', Mobile '+d.p1p+'. TENANT: Name '+d.p2+', Mobile '+d.p2p+'. The parties are referred to as the Landlord and Tenant.',detailsLabel:'Property details',details:'Full address: '+(d.address||'-')+', '+(d.city||'-')+', Maharashtra. Furnishing: '+d.furnish+'.',terms:['Rental period: From '+d.start+' to '+endStr+'.','Monthly rent: Rs. '+parseInt(d.rent).toLocaleString('en-IN')+', payable on or before the 5th day of each month.','Security deposit: Rs. '+parseInt(d.deposit).toLocaleString('en-IN')+', refundable subject to lawful and agreed deductions.','Electricity, water and other utility charges: As per actual usage / as agreed.','Maintenance responsibility: As mutually agreed.','Use: The premises shall be used only for residential purposes.','Subletting or transfer: Not permitted without the Landlord\'s prior written consent.','Upkeep: The Tenant shall keep the premises in reasonable condition, subject to normal wear and tear.','Alterations: Structural alterations require prior written permission.','Termination and notice: 1 Month notice, subject to applicable law.','Inspection: The Landlord may inspect after reasonable prior notice, except in emergencies.','Disputes: Subject to applicable law and courts having jurisdiction at '+(d.city||'Pune')+', Maharashtra.'],sigs:['Landlord: __________________','Tenant: __________________','Witness 1: __________________','Witness 2: __________________']},
+    sale:{title:'Agreement for Sale of Immovable Property',opening:'This Agreement for Sale is made on '+d.start+' at '+(d.city||'-')+', Maharashtra.',parties:'SELLER: Name '+d.p1+', Mobile '+d.p1p+'. PURCHASER: Name '+d.p2+', Mobile '+d.p2p+'.',detailsLabel:'Property description',details:'Property address: '+(d.address||'-')+', '+(d.city||'-')+', Maharashtra.',terms:['The Seller represents that they have the right and authority to enter into this transaction, subject to title verification.','Total sale consideration: '+fmtSale+'.','Earnest money / advance: As per payment details: '+(d.saleDetails||'-')+'.','Balance consideration: As per agreed schedule.','The Seller shall provide relevant title and property documents for due diligence.','The Seller shall disclose known encumbrances, mortgages, litigation and material claims affecting the property.','Possession shall be delivered on fulfilment of the agreed conditions.','Stamp duty, registration fees and other transaction costs shall be borne by the parties as agreed.','Property taxes, society dues and outgoings up to handover shall be borne by the Seller.','The parties shall cooperate in executing and registering the necessary conveyance / sale deed.','Consequences of default, cancellation and refund: As per applicable law and as agreed.','Disputes shall be subject to applicable law and competent courts at '+(d.city||'Pune')+', Maharashtra.'],sigs:['Seller: __________________','Purchaser: __________________','Witness 1: __________________','Witness 2: __________________']},
+    pg:{title:'Paying Guest (PG) Accommodation Agreement',opening:'This PG Accommodation Agreement is executed on '+d.start+' at '+(d.city||'-')+', Maharashtra.',parties:'PG OWNER / OPERATOR: Name '+d.p1+', Mobile '+d.p1p+'. OCCUPANT: Name '+d.p2+', Mobile '+d.p2p+'.',detailsLabel:'Accommodation details',details:'Property address: '+(d.address||'-')+', '+(d.city||'-')+'. Room sharing type: '+(d.pgRoom||'Double Sharing')+'.',terms:['Occupancy period: From '+d.start+' to '+endStr+'.','Monthly PG charges: Rs. '+parseInt(d.rent).toLocaleString('en-IN')+', payable by the 5th day of each month.','Security deposit: Rs. '+parseInt(d.deposit).toLocaleString('en-IN')+'; refund subject to lawful deductions.','Food: As per house rules / as agreed.','Electricity, internet, housekeeping and other charges: As per house rules.','Visitors and access: As per the written house rules supplied to the occupant.','The occupant shall maintain cleanliness and avoid nuisance or disturbance.','The occupant is responsible for damage caused by their negligence or wilful misconduct, excluding normal wear and tear.','Illegal activities and unauthorized transfer or sharing of occupancy are prohibited.','Identification and emergency contact details shall be provided where reasonably required by law.','Notice / termination period: 15 days, subject to applicable law.','Disputes shall be subject to applicable law and competent courts at '+(d.city||'Pune')+', Maharashtra.'],sigs:['PG Owner / Operator: __________________','Occupant: __________________','Witness 1: __________________','Witness 2: __________________']},
+    shop:{title:'Shop / Commercial Rental Agreement',opening:'This Commercial Rental Agreement is executed on '+d.start+' at '+(d.city||'-')+', Maharashtra.',parties:'LANDLORD: Name '+d.p1+', Mobile '+d.p1p+'. TENANT / BUSINESS OPERATOR: Name '+d.p2+', Mobile '+d.p2p+'. Business: '+(d.shopUse||'-')+'.',detailsLabel:'Premises',details:'Full address: '+(d.address||'-')+', '+(d.city||'-')+', Maharashtra.',terms:['Permitted business activity: '+(d.shopUse||'General Business')+'.','Agreement period: From '+d.start+' to '+endStr+'.','Monthly rent: Rs. '+parseInt(d.rent).toLocaleString('en-IN')+'; due on or before the 5th day of each month.','Security deposit: Rs. '+parseInt(d.deposit).toLocaleString('en-IN')+'; refund and deduction terms as agreed.','Rent escalation, if any: As mutually agreed.','Electricity, water, maintenance and other outgoings: As per actuals / as agreed.','The Tenant shall obtain and maintain licences and permissions required for its business.','Signage shall comply with applicable municipal, society and other requirements.','No structural alteration without prior written permission.','No subletting, assignment or transfer without prior written consent.','Termination and notice: 1 Month notice, subject to applicable law.','On handover, the premises shall be returned in agreed condition, subject to normal wear and tear.','Disputes shall be subject to applicable law and competent courts at '+(d.city||'Pune')+', Maharashtra.'],sigs:['Landlord: __________________','Tenant: __________________','Witness 1: __________________','Witness 2: __________________']},
+    leave:{title:'Residential Leave and License Agreement',opening:'This Leave and License Agreement is made and executed on '+d.start+' at '+(d.city||'-')+', Maharashtra.',parties:'LICENSOR: Name '+d.p1+', Mobile '+d.p1p+'. LICENSEE: Name '+d.p2+', Mobile '+d.p2p+'.',detailsLabel:'Licensed premises',details:'Full address: '+(d.address||'-')+', '+(d.city||'-')+', Maharashtra. Furnishing: '+d.furnish+'.',terms:['Licence period: From '+d.start+' to '+endStr+'.','Monthly licence fee: Rs. '+parseInt(d.rent).toLocaleString('en-IN')+', payable by the 5th day of each month.','Interest-free refundable security deposit: Rs. '+parseInt(d.deposit).toLocaleString('en-IN')+'.','Use: The premises shall be used exclusively for residential purposes.','Electricity, water, gas, internet and other utility charges: As per actuals / as agreed.','Maintenance responsibility: As mutually agreed.','The Licensee shall not assign, transfer, sub-license or permit unauthorized occupation.','The Licensee shall maintain the premises and return them in good condition, subject to normal wear and tear.','No structural alterations without prior written permission.','Inspection may take place after reasonable prior notice, except in emergencies.','Termination and notice: 1 Month notice, subject to applicable law.','On expiry or lawful termination, the Licensee shall hand over vacant possession and keys.','Deposit refund: Subject to adjustment of lawful outstanding dues and agreed deductions, the balance shall be returned within 15 days.','Disputes shall be subject to applicable law and competent courts at '+(d.city||'Pune')+', Maharashtra.'],sigs:['Licensor: __________________','Licensee: __________________','Witness 1: __________________','Witness 2: __________________']}
+  };
+  return map[selectedAgree]||map.rent;
 }
-function previewAgreement(isFinal){let d=getData();if(d.aff && !d.name){showToast('Fill Your Full Name first');return;}if(!d.aff && (!d.p1||!d.p2)){showToast('Fill Owner + Tenant Name first');return;}document.getElementById('agreementText').innerHTML=buildHTML(false,false);document.getElementById('watermarkBox').classList.remove('watermark-final');document.getElementById('previewTitle').innerText=AGREE_NAMES[selectedAgree].toUpperCase()+' - PAGE 1 + 2 PREVIEW';document.getElementById('previewModal').classList.remove('hidden');}
-function buildPDFBlob(sampleMode){
-  let d=sampleMode?getSampleData():getData();
-  let usePhotos=sampleMode?{}:photos;
-  const {jsPDF}=window.jspdf;const doc=new jsPDF();
-  function header(pageNo){doc.setFillColor(10,37,64);doc.rect(0,0,210,26,'F');doc.setTextColor(212,175,55);doc.setFont('helvetica','bold');doc.setFontSize(16);doc.text('MAW',12,12);doc.setTextColor(255,255,255);doc.setFontSize(18);doc.text('MyAgreementWala',28,12);doc.setFontSize(8);doc.setFont('helvetica','normal');doc.text('MAKE AGREEMENT EASY | 100% ONLINE  |  8329887823  |  PAGE '+pageNo,28,20);doc.setTextColor(0,0,0);doc.setFont('helvetica','bold');doc.setFontSize(16);doc.text(AGREE_NAMES[selectedAgree].toUpperCase(),12,38);doc.setDrawColor(245,158,11);doc.setLineWidth(1);doc.line(12,41,198,41);doc.setFontSize(9);doc.setFont('helvetica','normal');doc.setTextColor(100,100,100);doc.text(`Date: ${d.start}`,12,47);doc.setTextColor(0,0,0);}
-  function addWatermark(){doc.setFontSize(32);doc.setTextColor(255,0,0);doc.setFont('helvetica','bold');doc.text('SAMPLE',55,150,{angle:-30});doc.setFontSize(12);doc.text('NOT FOR USE',70,162,{angle:-30});doc.setTextColor(0,0,0);}
-  function row(doc,y,label,value){doc.setFillColor(249,250,251);doc.rect(12,y,55,10,'F');doc.setDrawColor(209,213,219);doc.rect(12,y,186,10);doc.setFont('helvetica','bold');doc.setFontSize(9);doc.text(label.toUpperCase(),14,y+6.5);doc.setFont('helvetica','normal');doc.setFontSize(10);let v=doc.splitTextToSize(String(value||'-'),120);doc.text(v,70,y+6.5);y+=10; if(v.length>1) y+=(v.length-1)*5; return y;}
-  function sigBox(doc,y,x,label,name){doc.setDrawColor(180,180,180);doc.rect(x,y,88,28);doc.setFontSize(7);doc.setTextColor(100,100,100);doc.text(label, x+2,y+5);doc.setTextColor(0,0,0);doc.setFontSize(10);doc.setFont('helvetica','bold');doc.text(String(name||'').substring(0,28),x+2,y+12);doc.setDrawColor(0,0,0);doc.line(x+2,y+20,x+86,y+20);doc.setFont('helvetica','normal');doc.setFontSize(8);doc.text('Signature & Date',x+2,y+25);}
-  header(1);
-  let y=55;
+function buildHTML(isFinal,sampleMode){
+  let d=sampleMode?getSampleData():getData(); let usePhotos=sampleMode?{party1:'',party2:'',party1Aadhaar:'',party2Aadhaar:''}:photos;
+  if(!lastDocId) lastDocId='ORD-'+Math.floor(1000+Math.random()*9000);
+  document.getElementById('previewTitle').innerText=(AGREE_NAMES[selectedAgree]||'').toUpperCase()+' - 2 PAGES PREVIEW';
   if(d.aff){
-    y=row(doc,y,'Full Name',d.name); if(d.father) y=row(doc,y,'Father / Husband',d.father); y=row(doc,y,'Mobile',d.phone); y=row(doc,y,'Purpose',d.purpose);
-    if(d.purpose==='Name Correction'){ y=row(doc,y,'Old Name',d.oldName||'-'); y=row(doc,y,'New Name',d.newName||d.name); }
-    y=row(doc,y,'Address',d.address+', '+d.city);
-    y+=4;doc.setFont('helvetica','normal');doc.setFontSize(10);
-    let paraText=d.purpose==='Name Correction'?`I, ${d.name}, residing at ${d.address}, ${d.city}, declare my correct name is ${d.newName||d.name} and earlier it was ${d.oldName||'-'}. Both names belong to same person.`:`I, ${d.name}, residing at ${d.address}, ${d.city}, solemnly declare as under:`;
-    let para=doc.splitTextToSize(paraText,186);doc.text(para,12,y);y+=para.length*5+4;
-    if(d.statement&&!sampleMode){let s=doc.splitTextToSize(d.statement,186);doc.text(s,12,y);y+=s.length*5+8;}
-    y+=4;doc.setFont('helvetica','bold');doc.setFontSize(11);doc.text('SIGNATURES - PAGE 1',12,y);y+=6;sigBox(doc,y,12,'APPLICANT',d.name);sigBox(doc,y,110,'NOTARY / WITNESS','Seal & Sign');
-    if(sampleMode) addWatermark();
-    doc.addPage();header(2);let y2=55;doc.setFont('helvetica','bold');doc.setFontSize(13);doc.text('PAGE 2 - ID PROOFS',12,y2);y2+=10;doc.setFont('helvetica','normal');doc.setFontSize(10);doc.text('Applicant Photo + Aadhaar Front (Optional)',12,y2);y2+=8;
-    if(sampleMode){doc.setDrawColor(180,180,180);doc.rect(12,y2,88,55);doc.text('SAMPLE PHOTO',22,y2+28);doc.rect(110,y2,88,55);doc.text('SAMPLE AADHAAR',120,y2+28);y2+=65;}
-    else { if(usePhotos.aff){try{doc.addImage(usePhotos.aff,'JPEG',12,y2,42,42);doc.text('Applicant Photo',12,y2+48);}catch(e){}} if(usePhotos.affAadhaar){try{doc.addImage(usePhotos.affAadhaar,'JPEG',70,y2,72,42);doc.text('Aadhaar Front',70,y2+48);}catch(e){}} y2+=58; if(!usePhotos.aff&&!usePhotos.affAadhaar){doc.text('No ID photo uploaded',12,y2);y2+=10;} }
-    y2+=6;doc.setFont('helvetica','bold');doc.setFontSize(11);doc.text('WITNESS SIGNATURES - PAGE 2',12,y2);y2+=6;sigBox(doc,y2,12,'WITNESS 1','Name:');sigBox(doc,y2,110,'WITNESS 2','Name:');
-    if(sampleMode) addWatermark();
-  } else {
-    let end=new Date(d.start);end.setMonth(end.getMonth()+parseInt(d.duration));let endStr=end.toISOString().split('T')[0];
-    y=row(doc,y,'Party 1 - Landlord',`${d.p1}  |  ${d.p1p}`);
-    y=row(doc,y,'Party 2 - Tenant',`${d.p2}  |  ${d.p2p}`);
-    y=row(doc,y,'Property',`${d.address}, ${d.city}, Maharashtra`);
-    y=row(doc,y,'Duration',`${d.duration} Months  (${d.start} to ${endStr})`);
-    y=row(doc,y,'Monthly Rent',`Rs. ${parseInt(d.rent).toLocaleString('en-IN')} / month`);
-    y=row(doc,y,'Security Deposit',`Rs. ${parseInt(d.deposit).toLocaleString('en-IN')} (Refundable)`);
-    y=row(doc,y,'Furnishing',d.furnish);
-    if(selectedAgree==='pg' && d.pgRoom) y=row(doc,y,'Room Type',d.pgRoom);
-    if(selectedAgree==='shop' && d.shopUse) y=row(doc,y,'Business Use',d.shopUse);
-    if(selectedAgree==='sale'){ y=row(doc,y,'Sale Amount',d.saleAmount||'-'); if(d.saleDetails) y=row(doc,y,'Sale Details',d.saleDetails); }
-    y+=6;doc.setFont('helvetica','bold');doc.setFontSize(11);doc.text('TERMS & CONDITIONS',12,y);y+=7;
-    doc.setFont('helvetica','normal');doc.setFontSize(10);
-    let terms=[`1. Property to be used for ${selectedAgree==='shop'?'Commercial':selectedAgree==='sale'?'Sale / Transfer':'Residential'} purpose only.`,`2. Tenant shall not sub-let without written consent of Landlord.`,`3. Monthly rent shall be paid on or before 5th of every month.`,`4. Security deposit shall be refunded after deduction of dues, if any.`,`5. Either party may terminate by giving 1 Month Notice in writing.`,`6. Tenant shall hand over vacant possession on expiry of agreement.`,`7. This agreement shall be governed by laws of Maharashtra.`];
-    terms.forEach(t=>{let lines=doc.splitTextToSize(t,186);doc.text(lines,12,y);y+=lines.length*5+1;});
-    y+=6;doc.setFont('helvetica','bold');doc.setFontSize(11);doc.text('SIGNATURES - PAGE 1',12,y);y+=6;sigBox(doc,y,12,'LANDLORD / PARTY 1',d.p1);sigBox(doc,y,110,'TENANT / PARTY 2',d.p2);
-    if(sampleMode) addWatermark();
-    doc.addPage();header(2);
-    let y2=55;doc.setFont('helvetica','bold');doc.setFontSize(13);doc.text('PAGE 2 - ID PROOFS & WITNESS',12,y2);y2+=10;doc.setFont('helvetica','normal');doc.setFontSize(10);doc.text('Owner Photo + Aadhaar Front  |  Tenant Photo + Aadhaar Front',12,y2);y2+=10;
-    if(sampleMode){
-      doc.setDrawColor(180,180,180);doc.rect(12,y2,88,52);doc.text('OWNER PHOTO - SAMPLE',16,y2+28);doc.rect(110,y2,88,52);doc.text('OWNER AADHAAR - SAMPLE',114,y2+28);y2+=60;
-      doc.rect(12,y2,88,52);doc.text('TENANT PHOTO - SAMPLE',16,y2+28);doc.rect(110,y2,88,52);doc.text('TENANT AADHAAR - SAMPLE',114,y2+28);y2+=60;
-    } else {
-      let x=12;
-      if(usePhotos.party1){try{doc.addImage(usePhotos.party1,'JPEG',x,y2,42,52);doc.setFontSize(8);doc.text('Owner Photo',x,y2+58);x+=50;}catch(e){}}
-      if(usePhotos.party1Aadhaar){try{doc.addImage(usePhotos.party1Aadhaar,'JPEG',x,y2,72,52);doc.setFontSize(8);doc.text('Owner Aadhaar Front',x,y2+58);}catch(e){}}
-      y2+=66;doc.setFontSize(10);
-      x=12;
-      if(usePhotos.party2){try{doc.addImage(usePhotos.party2,'JPEG',x,y2,42,52);doc.setFontSize(8);doc.text('Tenant Photo',x,y2+58);x+=50;}catch(e){}}
-      if(usePhotos.party2Aadhaar){try{doc.addImage(usePhotos.party2Aadhaar,'JPEG',x,y2,72,52);doc.setFontSize(8);doc.text('Tenant Aadhaar Front',x,y2+58);}catch(e){}}
-      if(!usePhotos.party1&&!usePhotos.party1Aadhaar&&!usePhotos.party2&&!usePhotos.party2Aadhaar){doc.setFontSize(10);doc.text('No ID photos uploaded - Paste Aadhaar copy here before print.',12,y2);y2+=10;} else {y2+=66;}
-    }
-    y2+=6;doc.setFont('helvetica','bold');doc.setFontSize(11);doc.text('WITNESS SIGNATURES - PAGE 2',12,y2);y2+=6;sigBox(doc,y2,12,'WITNESS 1','Name:');sigBox(doc,y2,110,'WITNESS 2','Name:');
-    if(sampleMode) addWatermark();
+    let termsHtml=['That I am the deponent herein and competent to make this affidavit.','That my full name is '+d.name+'.','That my father\'s / husband\'s / mother\'s name is '+(d.father||'-')+'.','That my permanent address is '+d.address+', '+d.city+'.','That the purpose of this affidavit is '+d.purpose+'.','That the facts stated in this affidavit are true and correct to the best of my knowledge and belief.','That I have not knowingly concealed any material fact relevant to this declaration.'].map((t,i)=>`<li><span>${i+1}</span><span>${t}</span></li>`).join('');
+    let idHtml=sampleMode?`<div class="id-grid"><div class="id-box"><p class="id-label">APPLICANT PHOTO - SAMPLE</p><div style="height:125px;background:#f3f4f6;display:grid;place-items:center">SAMPLE</div></div><div class="id-box"><p class="id-label">AADHAAR FRONT - SAMPLE</p><div style="height:125px;background:#f3f4f6;display:grid;place-items:center">SAMPLE</div></div></div>`:`<div class="id-grid">${!sampleMode&&photos.aff?`<div class="id-box"><p class="id-label">APPLICANT PHOTO</p><img src="${photos.aff}"></div>`:''}${!sampleMode&&photos.affAadhaar?`<div class="id-box"><p class="id-label">APPLICANT AADHAAR FRONT</p><img src="${photos.affAadhaar}"></div>`:''}${!photos.aff&&!photos.affAadhaar&&!sampleMode?`<p style="font-size:12px;color:#666">No ID photo uploaded - Paste photo / Aadhaar copy here before print.</p>`:''}</div>`;
+    return `<p class="sample-title">Affidavit / Declaration</p><p class="sample-h">Title</p><p class="sample-p">AFFIDAVIT / DECLARATION</p><p class="sample-h">Deponent</p><p class="sample-p">I, ${d.name}, aged Adult, residing at ${d.address}, ${d.city}, do hereby solemnly affirm and state as follows:</p><p class="sample-h">Statements</p><ul class="sample-terms">${termsHtml}</ul><p class="sample-p" style="margin-top:10px">${d.statement||''}</p><p class="sample-h">Verification</p><p class="sample-p">I, the above-named deponent, verify that the contents of this affidavit are true and correct to the best of my knowledge and belief and that nothing material has been concealed.</p><p class="sample-p">Place: ${d.city||'-'} &nbsp; Date: ${d.start}</p><p class="sample-h">Deponent</p><p class="sample-sig">Signature: __________________ &nbsp; Name: ${d.name}</p><p class="sample-h">Attestation</p><p class="sample-p">Identified by: __________________<br>Notary / Oath Commissioner: __________________<br>Signature and seal: __________________</p><div class="sample-pagebreak"><p class="sample-title" style="font-size:16px">Page 2 - ID Proofs</p><p class="sample-p">Applicant Photo + Aadhaar Front / Any Other Proof</p>${idHtml}<p class="sample-h">Witness</p><p class="sample-sig">Witness 1: __________________ &nbsp; Witness 2: __________________</p></div><p class="sample-footer">MYAGREEMENTWALA.COM | Sample format</p>`;
   }
-  doc.setFontSize(8);doc.setTextColor(130,130,130);doc.text('MyAgreementWala  |  8329887823  |  © 2026 MyAgreementWala - All Rights Reserved.',12,290);
+  let c=getDocContent(d);
+  let termsHtml=c.terms.map((t,i)=>`<li><span>${i+1}</span><span>${t}</span></li>`).join('');
+  let idHtml=sampleMode?`<div class="id-grid"><div class="id-box"><p class="id-label">PARTY 1 - PHOTO - SAMPLE</p><div style="height:125px;background:#f3f4f6;display:grid;place-items:center">SAMPLE</div></div><div class="id-box"><p class="id-label">PARTY 1 - AADHAAR - SAMPLE</p><div style="height:125px;background:#f3f4f6;display:grid;place-items:center">SAMPLE</div></div><div class="id-box"><p class="id-label">PARTY 2 - PHOTO - SAMPLE</p><div style="height:125px;background:#f3f4f6;display:grid;place-items:center">SAMPLE</div></div><div class="id-box"><p class="id-label">PARTY 2 - AADHAAR - SAMPLE</p><div style="height:125px;background:#f3f4f6;display:grid;place-items:center">SAMPLE</div></div></div>`:`<div class="id-grid">${usePhotos.party1?`<div class="id-box"><p class="id-label">PARTY 1 - PHOTO</p><img src="${usePhotos.party1}"></div>`:''}${usePhotos.party1Aadhaar?`<div class="id-box"><p class="id-label">PARTY 1 - AADHAAR FRONT</p><img src="${usePhotos.party1Aadhaar}"></div>`:''}${usePhotos.party2?`<div class="id-box"><p class="id-label">PARTY 2 - PHOTO</p><img src="${usePhotos.party2}"></div>`:''}${usePhotos.party2Aadhaar?`<div class="id-box"><p class="id-label">PARTY 2 - AADHAAR FRONT</p><img src="${usePhotos.party2Aadhaar}"></div>`:''}${!usePhotos.party1&&!usePhotos.party1Aadhaar&&!usePhotos.party2&&!usePhotos.party2Aadhaar?`<p style="font-size:12px;color:#666">No ID photos uploaded - Paste Photo / Aadhaar / Any Other Proof here before print.</p>`:''}</div>`;
+  return `<p class="sample-title">${c.title}</p><p class="sample-h">Opening</p><p class="sample-p">${c.opening}</p><p class="sample-h">Parties</p><p class="sample-p">${c.parties}</p><p class="sample-h">${c.detailsLabel}</p><p class="sample-p">${c.details}</p><p class="sample-h">Terms and conditions</p><ul class="sample-terms">${termsHtml}</ul><p class="sample-h">Signatures</p><p class="sample-sig">${c.sigs[0]} &nbsp;&nbsp; ${c.sigs[1]}<br>${c.sigs[2]} &nbsp;&nbsp; ${c.sigs[3]}</p><div class="sample-pagebreak"><p class="sample-title" style="font-size:16px">Page 2 - ID Proofs & Witness</p><p class="sample-p">Party 1 Photo + Aadhaar Front / Any Other Proof &nbsp;|&nbsp; Party 2 Photo + Aadhaar Front / Any Other Proof</p>${idHtml}<p class="sample-h">Witness Signatures</p><p class="sample-sig">Witness 1 Name: __________________ &nbsp; Signature: __________________<br>Witness 2 Name: __________________ &nbsp; Signature: __________________</p></div><p class="sample-footer">MYAGREEMENTWALA.COM | Sample format &nbsp;|&nbsp; WhatsApp 8329887823 &nbsp;|&nbsp; © 2026 MyAgreementWala</p>`;
+}
+function previewAgreement(isFinal){let d=getData();if(d.aff&&!d.name){showToast('Fill Your Full Name first');return;}if(!d.aff&&(!d.p1||!d.p2)){showToast('Fill Owner + Tenant Name first');return;}if(selectedAgree==='sale'&&!d.saleAmount){showToast('For Sale, fill Sale Amount first');return;}document.getElementById('agreementText').innerHTML=buildHTML(false,false);document.getElementById('previewModal').classList.remove('hidden');}
+function buildPDFBlob(sampleMode){
+  let d=sampleMode?getSampleData():getData(); let usePhotos=sampleMode?{}:photos; const {jsPDF}=window.jspdf; const doc=new jsPDF();
+  function headerFooter(pageNo,total){doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(80,80,80);doc.text('MYAGREEMENTWALA.COM',105,12,{align:'center'});doc.setDrawColor(0,0,0);doc.setLineWidth(.4);doc.line(14,15,196,15);doc.text('MYAGREEMENTWALA.COM | Sample format',14,288);doc.text('Page '+pageNo+' of '+total,196,288,{align:'right'});doc.setTextColor(0,0,0);}
+  function addWatermark(){doc.setFontSize(34);doc.setTextColor(255,0,0);doc.setFont('helvetica','bold');doc.text('SAMPLE',60,145,{angle:-30});doc.setFontSize(12);doc.text('NOT FOR USE',75,157,{angle:-30});doc.setTextColor(0,0,0);}
+  headerFooter(1,2); let y=22;
+  if(d.aff){
+    doc.setFont('helvetica','bold');doc.setFontSize(15);doc.text('AFFIDAVIT / DECLARATION',14,y);y+=10;
+    doc.setFont('helvetica','bolditalic');doc.setFontSize(11);doc.text('Title',14,y);y+=6;doc.setFont('helvetica','normal');doc.setFontSize(10);doc.text('AFFIDAVIT / DECLARATION',14,y);y+=9;
+    doc.setFont('helvetica','bolditalic');doc.text('Deponent',14,y);y+=6;doc.setFont('helvetica','normal');let dep=doc.splitTextToSize('I, '+d.name+', aged Adult, residing at '+d.address+', '+d.city+', do hereby solemnly affirm and state as follows:',182);doc.text(dep,14,y);y+=dep.length*5+4;
+    doc.setFont('helvetica','bolditalic');doc.text('Statements',14,y);y+=6;doc.setFont('helvetica','normal');
+    let stmts=['That I am the deponent herein and competent to make this affidavit.','That my full name is '+d.name+'.','That my father\'s / husband\'s / mother\'s name is '+(d.father||'-')+'.','That my permanent address is '+d.address+', '+d.city+'.','That the purpose of this affidavit is '+d.purpose+'.','That the facts stated in this affidavit are true and correct to the best of my knowledge and belief.','That I have not knowingly concealed any material fact relevant to this declaration.'];
+    stmts.forEach((t,i)=>{let lines=doc.splitTextToSize(t,168);doc.text(String(i+1),14,y);doc.text(lines,22,y);y+=lines.length*5+2;});
+    if(d.statement){let s=doc.splitTextToSize(d.statement,182);doc.text(s,14,y);y+=s.length*5+3;}
+    y+=2;doc.setFont('helvetica','bolditalic');doc.text('Verification',14,y);y+=6;doc.setFont('helvetica','normal');let v=doc.splitTextToSize('I, the above-named deponent, verify that the contents of this affidavit are true and correct to the best of my knowledge and belief and that nothing material has been concealed.',182);doc.text(v,14,y);y+=v.length*5+4;
+    doc.text('Place: '+(d.city||'-')+'  Date: '+d.start,14,y);y+=10;doc.setFont('helvetica','bolditalic');doc.text('Deponent',14,y);y+=6;doc.setFont('helvetica','normal');doc.text('Signature: __________________  Name: '+d.name,14,y);y+=9;doc.setFont('helvetica','bolditalic');doc.text('Attestation',14,y);y+=6;doc.setFont('helvetica','normal');doc.text('Identified by: __________________',14,y);y+=6;doc.text('Notary / Oath Commissioner: __________________',14,y);y+=6;doc.text('Signature and seal: __________________',14,y);
+    if(sampleMode)addWatermark();
+  } else {
+    let c=getDocContent(d);
+    doc.setFont('helvetica','bold');doc.setFontSize(15);let titleLines=doc.splitTextToSize(c.title.toUpperCase(),182);doc.text(titleLines,14,y);y+=titleLines.length*7+3;
+    function section(head,body){doc.setFont('helvetica','bolditalic');doc.setFontSize(11);doc.text(head,14,y);y+=6;doc.setFont('helvetica','normal');doc.setFontSize(10);let lines=doc.splitTextToSize(body,182);doc.text(lines,14,y);y+=lines.length*5+3;return y;}
+    y=section('Opening',c.opening);y=section('Parties',c.parties);y=section(c.detailsLabel,c.details);
+    doc.setFont('helvetica','bolditalic');doc.setFontSize(11);doc.text('Terms and conditions',14,y);y+=7;doc.setFont('helvetica','normal');doc.setFontSize(10);
+    c.terms.forEach((t,i)=>{let lines=doc.splitTextToSize(t,168);doc.text(String(i+1),14,y);doc.text(lines,22,y);y+=lines.length*5+2;});
+    y+=3;doc.setFont('helvetica','bolditalic');doc.setFontSize(11);doc.text('Signatures',14,y);y+=7;doc.setFont('helvetica','normal');doc.setFontSize(10);
+    doc.text(c.sigs[0]+'    '+c.sigs[1],14,y);y+=7;doc.text(c.sigs[2]+'    '+c.sigs[3],14,y);
+    if(sampleMode)addWatermark();
+  }
+  doc.addPage();headerFooter(2,2);let y2=22;
+  doc.setFont('helvetica','bold');doc.setFontSize(14);doc.text('PAGE 2 - ID PROOFS & WITNESS',14,y2);y2+=9;
+  doc.setFont('helvetica','normal');doc.setFontSize(10);doc.text(d.aff?'Applicant Photo + Aadhaar Front / Any Other Proof':'Party 1 Photo + Aadhaar Front / Any Other Proof  |  Party 2 Photo + Aadhaar Front / Any Other Proof',14,y2);y2+=9;
+  if(sampleMode){doc.setDrawColor(150,150,150);doc.rect(14,y2,84,58);doc.text('PARTY 1 - PHOTO - SAMPLE',18,y2+30);doc.rect(112,y2,84,58);doc.text('PARTY 1 - AADHAAR - SAMPLE',116,y2+30);y2+=66;doc.rect(14,y2,84,58);doc.text('PARTY 2 - PHOTO - SAMPLE',18,y2+30);doc.rect(112,y2,84,58);doc.text('PARTY 2 - AADHAAR - SAMPLE',116,y2+30);y2+=66;}
+  else{
+    if(d.aff){if(usePhotos.aff){try{doc.addImage(usePhotos.aff,'JPEG',14,y2,48,58);doc.setFontSize(8);doc.text('Applicant Photo',14,y2+64);}catch(e){}}if(usePhotos.affAadhaar){try{doc.addImage(usePhotos.affAadhaar,'JPEG',80,y2,78,58);doc.setFontSize(8);doc.text('Aadhaar Front',80,y2+64);}catch(e){}}if(!usePhotos.aff&&!usePhotos.affAadhaar){doc.setFontSize(10);doc.text('No ID photo uploaded - Paste Photo / Aadhaar copy here.',14,y2);}y2+=74;}
+    else{let x=14;if(usePhotos.party1){try{doc.addImage(usePhotos.party1,'JPEG',x,y2,48,58);doc.setFontSize(8);doc.text('Party 1 Photo',x,y2+64);x+=54;}catch(e){}}if(usePhotos.party1Aadhaar){try{doc.addImage(usePhotos.party1Aadhaar,'JPEG',x,y2,78,58);doc.setFontSize(8);doc.text('Party 1 Aadhaar Front',x,y2+64);}catch(e){}}y2+=72;x=14;if(usePhotos.party2){try{doc.addImage(usePhotos.party2,'JPEG',x,y2,48,58);doc.setFontSize(8);doc.text('Party 2 Photo',x,y2+64);x+=54;}catch(e){}}if(usePhotos.party2Aadhaar){try{doc.addImage(usePhotos.party2Aadhaar,'JPEG',x,y2,78,58);doc.setFontSize(8);doc.text('Party 2 Aadhaar Front',x,y2+64);}catch(e){}}if(!usePhotos.party1&&!usePhotos.party1Aadhaar&&!usePhotos.party2&&!usePhotos.party2Aadhaar){doc.setFontSize(10);doc.text('No ID photos uploaded - Paste Photo / Aadhaar / Any Other Proof here.',14,y2);y2+=10;}else{y2+=72;}}
+  }
+  y2+=6;doc.setFont('helvetica','bolditalic');doc.setFontSize(11);doc.text('Witness Signatures',14,y2);y2+=8;doc.setFont('helvetica','normal');doc.setFontSize(10);
+  doc.text('Witness 1 Name: __________________  Signature: __________________',14,y2);y2+=8;doc.text('Witness 2 Name: __________________  Signature: __________________',14,y2);
+  if(sampleMode)addWatermark();
   return doc.output('blob');
 }
-function viewSamplePDF(){
-  let blob=buildPDFBlob(true);
-  let url=URL.createObjectURL(blob);
-  window.open(url,'_blank');
-  showToast('Sample PDF Opened - Same Design as Real - 2 Pages');
-}
-async function unlockPDF(){
-  let code=document.getElementById('unlockInput').value.trim().toUpperCase();
-  let btn=document.getElementById('unlockBtn');
-  if(!code){showToast('Enter Your Code');return;}
-  if(code==='MAW-1004'){
-    isUnlocked=true;
-    document.getElementById('lockedBtns').classList.remove('locked');
-    document.getElementById('unlockStatus').innerText='✅ Unlocked! Test Code Accepted';
-    document.getElementById('unlockStatus').style.color='#22c55e';
-    showToast('Unlocked! Test Code ✅');
-    return;
-  }
-  btn.innerText='Checking...'; btn.disabled=true;
-  document.getElementById('unlockStatus').innerText='⏳ Checking code...';
-  try{
-    const res=await fetch(SHEET_URL+'?code='+encodeURIComponent(code)+'&order='+(lastDocId||''));
-    const data=await res.json();
-    if(data.ok){
-      isUnlocked=true;
-      document.getElementById('lockedBtns').classList.remove('locked');
-      document.getElementById('unlockStatus').innerText='✅ Unlocked! Now Create PDF';
-      document.getElementById('unlockStatus').style.color='#22c55e';
-      showToast('Unlocked! ✅');
-    } else if(data.msg==='ALREADY_USED'){
-      document.getElementById('unlockStatus').innerText='❌ This code ALREADY USED. Buy new code.';
-      showToast('Code Already Used!');
-    } else {
-      document.getElementById('unlockStatus').innerText='❌ INVALID CODE. Check & try again.';
-      showToast('Wrong Code!');
-    }
-  }catch(e){
-    document.getElementById('unlockStatus').innerText='❌ Network error. Try again.';
-    showToast('Network error - Try again');
-  }
-  btn.innerText='Unlock'; btn.disabled=false;
-}
-async function createPDF(){
-  if(!isUnlocked){showToast('Pay first + Enter Code');document.getElementById('unlockInput').focus();return;}
-  let d=getData();
-  if(d.aff && !d.name){showToast('Fill Your Full Name first');return;}
-  if(!d.aff && (!d.p1||!d.p2)){showToast('Fill Owner + Tenant Name first');return;}
-  closePreview();
-  if(!lastDocId) lastDocId='ORD-'+Math.floor(1000+Math.random()*9000);
-  lastFileName=`${AGREE_NAMES[selectedAgree]}.pdf`;
-  lastPDFBlob=buildPDFBlob(false);
-  if(lastPDFUrl) URL.revokeObjectURL(lastPDFUrl);
-  lastPDFUrl=URL.createObjectURL(lastPDFBlob);
-  document.getElementById('shareBox').scrollIntoView({behavior:'smooth'});
-  showToast('PDF Created - 2 Pages!');
-}
-function downloadPDFOnly(){
-  if(!isUnlocked){showToast('Pay first + Enter Code');return;}
-  if(!lastPDFBlob){showToast('Create PDF first');return;}
-  if(!lastPDFUrl) lastPDFUrl=URL.createObjectURL(lastPDFBlob);
-  window.open(lastPDFUrl,'_blank');
-  showToast('PDF Opened');
-}
-async function sharePDFFile(){
-  if(!isUnlocked){showToast('Pay first + Enter Code');return;}
-  if(!lastPDFBlob){showToast('Create PDF first');return;}
-  if(!lastPDFUrl) lastPDFUrl=URL.createObjectURL(lastPDFBlob);
-  let file=new File([lastPDFBlob],lastFileName,{type:'application/pdf'});
-  try{
-    if(navigator.canShare && navigator.canShare({files:[file]})){
-      await navigator.share({files:[file], title:AGREE_NAMES[selectedAgree], text:`${AGREE_NAMES[selectedAgree]}`});
-      showToast('PDF Shared!');
-      return;
-    }
-  }catch(e){}
-  window.open(lastPDFUrl,'_blank');
-  showToast('PDF Opened - Tap Share in PDF viewer > WhatsApp');
-}
+function viewSamplePDF(){let blob=buildPDFBlob(true);let url=URL.createObjectURL(blob);window.open(url,'_blank');showToast('Sample PDF Opened - Same Design as Real - 2 Pages');}
+async function unlockPDF(){let code=document.getElementById('unlockInput').value.trim().toUpperCase();let btn=document.getElementById('unlockBtn');if(!code){showToast('Enter Your Code');return;}if(code==='MAW-1004'){isUnlocked=true;document.getElementById('lockedBtns').classList.remove('locked');document.getElementById('unlockStatus').innerText='✅ Unlocked! Test Code Accepted';document.getElementById('unlockStatus').style.color='#22c55e';showToast('Unlocked! Test Code ✅');return;}btn.innerText='Checking...';btn.disabled=true;document.getElementById('unlockStatus').innerText='⏳ Checking code...';try{const res=await fetch(SHEET_URL+'?code='+encodeURIComponent(code)+'&order='+(lastDocId||''));const data=await res.json();if(data.ok){isUnlocked=true;document.getElementById('lockedBtns').classList.remove('locked');document.getElementById('unlockStatus').innerText='✅ Unlocked! Now Create PDF';document.getElementById('unlockStatus').style.color='#22c55e';showToast('Unlocked! ✅');}else if(data.msg==='ALREADY_USED'){document.getElementById('unlockStatus').innerText='❌ This code ALREADY USED. Buy new code.';showToast('Code Already Used!');}else{document.getElementById('unlockStatus').innerText='❌ INVALID CODE. Check & try again.';showToast('Wrong Code!');}}catch(e){document.getElementById('unlockStatus').innerText='❌ Network error. Try again.';showToast('Network error - Try again');}btn.innerText='Unlock';btn.disabled=false;}
+async function createPDF(){if(!isUnlocked){showToast('Pay first + Enter Code');document.getElementById('unlockInput').focus();return;}let d=getData();if(d.aff&&!d.name){showToast('Fill Your Full Name first');return;}if(!d.aff&&(!d.p1||!d.p2)){showToast('Fill Owner + Tenant Name first');return;}if(selectedAgree==='sale'&&!d.saleAmount){showToast('For Sale, fill Sale Amount first');return;}closePreview();if(!lastDocId)lastDocId='ORD-'+Math.floor(1000+Math.random()*9000);lastFileName=`${AGREE_NAMES[selectedAgree]}.pdf`;lastPDFBlob=buildPDFBlob(false);if(lastPDFUrl)URL.revokeObjectURL(lastPDFUrl);lastPDFUrl=URL.createObjectURL(lastPDFBlob);document.getElementById('shareBox').scrollIntoView({behavior:'smooth'});showToast('PDF Created - 2 Pages!');}
+function downloadPDFOnly(){if(!isUnlocked){showToast('Pay first + Enter Code');return;}if(!lastPDFBlob){showToast('Create PDF first');return;}if(!lastPDFUrl)lastPDFUrl=URL.createObjectURL(lastPDFBlob);window.open(lastPDFUrl,'_blank');showToast('PDF Opened');}
+async function sharePDFFile(){if(!isUnlocked){showToast('Pay first + Enter Code');return;}if(!lastPDFBlob){showToast('Create PDF first');return;}if(!lastPDFUrl)lastPDFUrl=URL.createObjectURL(lastPDFBlob);let file=new File([lastPDFBlob],lastFileName,{type:'application/pdf'});try{if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:AGREE_NAMES[selectedAgree],text:`${AGREE_NAMES[selectedAgree]}`});showToast('PDF Shared!');return;}}catch(e){}window.open(lastPDFUrl,'_blank');showToast('PDF Opened - Tap Share in PDF viewer > WhatsApp');}
 function closePreview(){document.getElementById('previewModal').classList.add('hidden');}
 function showStampGuide(){document.getElementById('stampModal').classList.remove('hidden');}
 function closeStampGuide(){document.getElementById('stampModal').classList.add('hidden');}
-function orderWhatsApp(){
-  let d=getData();
-  if(!lastDocId) lastDocId='ORD-'+Math.floor(1000+Math.random()*9000);
-  let msg=d.aff?`Hi! I PAID Rs.${planPrice} for ${AGREE_NAMES[selectedAgree]}.\nOrder: ${lastDocId}\nName: ${d.name}\nMobile: ${d.phone}\nCity: ${d.city}\nPurpose: ${d.purpose}\nStatement: ${d.statement}\nPlease send Unlock Code.`:`Hi! I PAID Rs.${planPrice} for ${AGREE_NAMES[selectedAgree]}.\nOrder: ${lastDocId}\nLandlord: ${d.p1} (${d.p1p})\nTenant: ${d.p2} (${d.p2p})\nProperty: ${d.address}, ${d.city}\nRent: Rs.${d.rent} Deposit: Rs.${d.deposit}\nPlease send Unlock Code.`;
-  window.open(`https://wa.me/${YOUR_WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');
-  showToast('Details sent! We will reply with Unlock Code');
-}
+function orderWhatsApp(){let d=getData();if(!lastDocId)lastDocId='ORD-'+Math.floor(1000+Math.random()*9000);let msg=d.aff?`Hi! I PAID Rs.${planPrice} for ${AGREE_NAMES[selectedAgree]}.\nOrder: ${lastDocId}\nName: ${d.name}\nMobile: ${d.phone}\nCity: ${d.city}\nPurpose: ${d.purpose}\nStatement: ${d.statement}\nPlease send Unlock Code.`:(selectedAgree==='sale'?`Hi! I PAID Rs.${planPrice} for ${AGREE_NAMES[selectedAgree]}.\nOrder: ${lastDocId}\nSeller: ${d.p1} (${d.p1p})\nBuyer: ${d.p2} (${d.p2p})\nProperty: ${d.address}, ${d.city}\nSale Amount: Rs.${d.saleAmount} Details: ${d.saleDetails}\nPlease send Unlock Code.`:`Hi! I PAID Rs.${planPrice} for ${AGREE_NAMES[selectedAgree]}.\nOrder: ${lastDocId}\nLandlord: ${d.p1} (${d.p1p})\nTenant: ${d.p2} (${d.p2p})\nProperty: ${d.address}, ${d.city}\nRent: Rs.${d.rent} Deposit: Rs.${d.deposit}\nPlease send Unlock Code.`);window.open(`https://wa.me/${YOUR_WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');showToast('Details sent! We will reply with Unlock Code');}
 function copyUPI(){navigator.clipboard.writeText(YOUR_UPI).then(()=>showToast('UPI Copied'));}
 function payNow(){let upiLink=`upi://pay?pa=${YOUR_UPI}&pn=myagreementwala&am=${planPrice}&cu=INR&tn=${AGREE_NAMES[selectedAgree]}`;if(confirm(`Pay Rs.${planPrice}?\nUPI: ${YOUR_UPI}`)){window.location.href=upiLink;}}
-toggleAffFields();updateCalc();document.getElementById('startDate').value=new Date().toISOString().split('T')[0];
+toggleAffFields();updateCalc();document.getElementById('startDate').value=new Date().toISOString().split('T')[0];if(document.getElementById('saleDate'))document.getElementById('saleDate').value=new Date().toISOString().split('T')[0];
 </script>
 </body>
 </html>
